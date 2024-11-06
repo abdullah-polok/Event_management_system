@@ -1,17 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import event1 from "../../../assets/Images/Work anniversary-bro.png";
 const Login = () => {
   return (
     <div className="hero  min-h-screen  ">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+        <div>
+          <img src={event1} />
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form className="card-body">
@@ -43,11 +38,16 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <Link to={"/home"} className="btn btn-primary">
+              <Link to={"/home"} className="btn bg-[#447af4] text-white">
                 Login
               </Link>
             </div>
           </form>
+          <div className="px-10 py-4">
+            <Link to={"/register"} className="text-[#447af4]">
+              Create a account?
+            </Link>
+          </div>
         </div>
       </div>
     </div>
