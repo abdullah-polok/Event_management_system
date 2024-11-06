@@ -3,6 +3,9 @@ import Login from "../Pages/Auth/Login/Login";
 import Main from "../Layout/Main/Main";
 import Register from "../Pages/Auth/Register/Register";
 import Home from "../Pages/Home/Home";
+import EventCreation from "../Pages/EventCreation/EventCreation";
+import EventRegistration from "../Pages/EventRegistration/EventRegistration";
+import Feedback from "../Pages/Feedback/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
+      },
+      {
+        path: "/eventcreation",
+        element: <EventCreation></EventCreation>,
+      },
+      {
+        path: "/eventregistration",
+        element: <EventRegistration></EventRegistration>,
+      },
+      {
+        path: "/feedback",
+        element: <Feedback></Feedback>,
       },
     ],
   },
