@@ -1,29 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import create from "../../assets/Images/interface.png";
+import register from "../../assets/Images/add.png";
+import feedback from "../../assets/Images/best-customer-experience.png";
 const LeftNavbar = () => {
   return (
-    <div className="bg-[#447af4] min-h-screen w-80">
+    <div className="bg-[#447af4] min-h-screen w-28">
       <div className="px-6 py-10">
-        <div className="bg-[#FFFFFF24] px-16 py-3">
+        <div className="bg-[#FFFFFF24] rounded-lg p-2">
           <Link
             to={"/eventcreation"}
             className="text-base text-white  rounded-sm "
           >
-            Event creation
+            <img className="w-20 bg-slate-200 rounded-lg p-1" src={create} />
           </Link>
         </div>
-        <div className="bg-[#FFFFFF24] px-16 py-3 mt-4">
+        <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
           <Link
             to={"/eventregistration"}
             className="text-base text-white  rounded-sm "
           >
-            Event Registration
+            <img className="w-20 bg-slate-200 rounded-lg p-1" src={register} />
           </Link>
         </div>
-        <div className="bg-[#FFFFFF24] px-16 py-3 mt-4">
+        <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
           <Link to={"/feedback"} className="text-base text-white  rounded-sm ">
-            Feedback
+            <img className="w-20 bg-slate-200 rounded-lg p-1" src={feedback} />
           </Link>
         </div>
       </div>
