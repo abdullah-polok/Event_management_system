@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import EventCreation from "../Pages/EventCreation/EventCreation";
 import EventRegistration from "../Pages/EventRegistration/EventRegistration";
 import Feedback from "../Pages/Feedback/Feedback";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/feedback",
         element: <Feedback></Feedback>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
       },
     ],
   },

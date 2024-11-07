@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const { logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleUser = () => {
+    logoutUser();
+    navigate("/login");
+  };
   return (
     <div className="navbar bg-base-100 shadow shadow-md">
       <div className="flex-1">
@@ -25,7 +33,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Logout</a>
+              <button onClick={handleUser}>Logout</button>
             </li>
           </ul>
         </div>
