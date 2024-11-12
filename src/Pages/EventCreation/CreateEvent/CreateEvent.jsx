@@ -1,15 +1,55 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import axios from "axios";
 import addevent from "../../../assets/Images/add-button.png";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const CreateEvent = () => {
+  const { addEventFunc } = useContext(AuthContext);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imgUrl, setImageUrl] = useState("");
+
+  const apiKeys = "1ba08fcb8d889501df3573b6ada7b5a4";
+
   const handleEvent = (e) => {
     e.preventDefault();
     const form = e.target;
     const event = form.event.value;
-    const data = form.date.value;
-    const media = form.media.value;
+    const date = form.date.value;
 
-    e.target.reset();
-    console.log(event, data, media);
+    const eventData = {
+      name: event,
+      date: date,
+      imageLink: imgUrl,
+    };
+    addEventFunc(eventData);
+  };
+
+  const handleFileChange = (event) => {
+    event.preventDefault();
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert("Please select a file first!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    try {
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${apiKeys}`,
+        formData
+      );
+
+      // Set the image URL from the response
+      setImageUrl(response.data.data.display_url);
+      alert("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
+    }
   };
 
   return (
@@ -57,7 +97,7 @@ const CreateEvent = () => {
                     required
                   />
                 </div>
-                <div className="form-control">
+                <div className="">
                   <label className="label">
                     <span className="label-text">Media</span>
                   </label>
@@ -65,9 +105,18 @@ const CreateEvent = () => {
                     type="file"
                     name="media"
                     placeholder="Date"
-                    className="input input-bordered py-2"
+                    onChange={handleFileChange}
+                    className="input input-bordered py-2 w-full"
                     required
                   />
+                  <div className="text-center">
+                    <button
+                      className="btn btn-sm bg-[#447af4] text-white mt-2 "
+                      onClick={handleUpload}
+                    >
+                      Upload Image
+                    </button>
+                  </div>
                 </div>
 
                 <div className="form-control mt-6">

@@ -14,6 +14,15 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  ///Save event in the database
+  const addEventFunc = (eventData) => {
+    try {
+      console.log(eventData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   ///create user using firebase
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -53,8 +62,10 @@ const AuthProvider = ({ children }) => {
     createUser,
     logoutUser,
     sendEmailVerification,
+    resetPassword,
+    addEventFunc,
   };
-  console.log(user);
+
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
