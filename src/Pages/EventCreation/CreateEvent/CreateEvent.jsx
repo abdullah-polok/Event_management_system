@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import addevent from "../../../assets/Images/add-button.png";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import RecentCreatedEvent from "../../../Components/RecentCreatedEvent/RecentCreatedEvent";
 const CreateEvent = () => {
   const { addEventFunc, user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -28,7 +29,6 @@ const CreateEvent = () => {
     };
 
     if (imgUrl !== "") {
-      console.log(eventData);
       addEventFunc(eventData);
       // setTimeout(() => {
       //   window.location.reload();
@@ -67,15 +67,15 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="mt-16">
-      <div className="bg-white  shadow-lg pr-10 py-10 pl-4">
-        <div>
+    <div className="mt-16 px-10">
+      <div className="bg-white  shadow-lg py-4 rounded-lg">
+        <div className="px-6">
           <h1 className="text-2xl text-left">Add Event</h1>
           <p className="mt-1 text-[#4d6d79]">
             Create your favorite event with CampusConnect
           </p>
         </div>
-        <div className="mt-6 flex items-center justify-center">
+        <div className="mt-6 flex items-center">
           <img
             onClick={() => document.getElementById("my_modal_1").showModal()}
             src={addevent}
@@ -191,6 +191,9 @@ const CreateEvent = () => {
             </div>
           </dialog>
         </div>
+      </div>
+      <div className="mt-20">
+        <RecentCreatedEvent></RecentCreatedEvent>
       </div>
     </div>
   );

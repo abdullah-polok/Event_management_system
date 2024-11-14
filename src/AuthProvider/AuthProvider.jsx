@@ -16,6 +16,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 import { auth, db } from "../../firebase.config";
 
 export const AuthContext = createContext(null);
@@ -24,29 +25,22 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [eventData, setEventData] = useState([]);
 
-  ///Get event date from data
-
+  ///Get all  date from eventdata collection
   const getEventFunc = async () => {
     if (user) {
       try {
-        const userDocRef = doc(db, "eventData");
-        const eventCollection = await getDoc(userDocRef);
+        const eventCollectionRef = collection(db, "eventData");
+        const events = await getDocs(eventCollectionRef);
+        // Array to store data from each document
+        const eventsList = [];
 
-        // Get all documents in the collection
-        const events = await getDocs(eventCollection);
-
-        // Create an array to store the documents
-        // const eventsList = [];
-
-        // Loop through the documents in the querySnapshot and push the data to eventsList
-
+        // Loop through each document in the collection
         events.forEach((doc) => {
-          // doc.id is the document ID, doc.data() is the document data
-          setEventData.push({ id: doc.id, ...doc.data() });
+          // Push the document data with the document ID included
+          eventsList.push({ id: doc.id, ...doc.data() });
         });
 
-        // console.log('All event data:', eventsList);  // Log the array containing all documents data
-        // return eventsList;
+        setEventData(eventsList);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
@@ -54,16 +48,17 @@ const AuthProvider = ({ children }) => {
   };
 
   ///Save event in the database
-  const addEventFunc = async (eventData) => {
+  const addEventFunc = async (eachEventData) => {
     try {
-      console.log("event data get:", eventData);
+      console.log("event data get:", eachEventData);
 
       // setDoc(doc(db, "eventData", 1), {
       //   eventData,
       // });
 
       const eventCollectionRef = collection(db, "eventData");
-      const docRef = await addDoc(eventCollectionRef, eventData);
+      ///This function auto generate Document ID
+      const docRef = await addDoc(eventCollectionRef, eachEventData);
 
       console.log("event data send successfully");
       Swal.fire({
@@ -109,7 +104,8 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, [user]);
-  // console.log(user);
+
+  console.log(eventData);
   const userInfo = {
     user,
     signInUser,
@@ -118,6 +114,7 @@ const AuthProvider = ({ children }) => {
     sendEmailVerification,
     resetPassword,
     addEventFunc,
+    eventData,
   };
 
   return (

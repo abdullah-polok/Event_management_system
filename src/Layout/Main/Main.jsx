@@ -14,7 +14,7 @@ const Main = () => {
             <LeftNavbar></LeftNavbar>
           </nav>
         </div>
-        <div className="mx-auto mt-10">
+        <div className="mx-auto mt-10 flex-auto">
           {/* Main Content Area */}
           <main className="main-content">
             <Outlet /> {/* Renders the active route's content */}
