@@ -3,7 +3,7 @@ import axios from "axios";
 import addevent from "../../../assets/Images/add-button.png";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const CreateEvent = () => {
-  const { addEventFunc } = useContext(AuthContext);
+  const { addEventFunc, user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
   const [imgUrl, setImageUrl] = useState("");
 
@@ -18,6 +18,7 @@ const CreateEvent = () => {
     const location = form.location.value;
     const eventType = form.eventType.value;
     const eventData = {
+      email: user?.email,
       name: event,
       starttime: starttime,
       endtime: endtime,
