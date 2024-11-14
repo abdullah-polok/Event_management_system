@@ -41,7 +41,7 @@ const Login = () => {
         <div>
           <img src={event1} />
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0">
           <form onSubmit={handleSignIn} className="card-body">
             <div className="form-control">
               <label className="label">

@@ -89,7 +89,7 @@ const Register = () => {
         <div>
           <img src={event2} />
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0">
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">

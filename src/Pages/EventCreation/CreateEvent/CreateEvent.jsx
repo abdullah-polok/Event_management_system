@@ -13,18 +13,31 @@ const CreateEvent = () => {
     e.preventDefault();
     const form = e.target;
     const event = form.event.value;
-    const date = form.date.value;
-
+    const starttime = form.starttime.value;
+    const endtime = form.endtime.value;
+    const location = form.location.value;
+    const eventType = form.eventType.value;
     const eventData = {
       name: event,
-      date: date,
+      starttime: starttime,
+      endtime: endtime,
+      location: location,
+      eventType: eventType,
       imageLink: imgUrl,
     };
-    addEventFunc(eventData);
+
+    if (imgUrl !== "") {
+      console.log(eventData);
+      addEventFunc(eventData);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 3000);
+    }
+
+    // e.target.reset();
   };
 
   const handleFileChange = (event) => {
-    event.preventDefault();
     setSelectedFile(event.target.files[0]);
   };
 
@@ -80,22 +93,65 @@ const CreateEvent = () => {
                   <input
                     type="text"
                     name="event"
-                    placeholder="event"
+                    placeholder="name of event"
                     className="input input-bordered"
                     required
                   />
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Date</span>
+                    <span className="label-text">Starting Date</span>
                   </label>
                   <input
-                    type="date"
-                    name="date"
-                    placeholder="Date"
+                    type="datetime-local"
+                    name="starttime"
+                    placeholder="start time"
                     className="input input-bordered"
                     required
                   />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Ending Date</span>
+                  </label>
+                  <input
+                    type="datetime-local"
+                    name="endtime"
+                    placeholder="end time"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Location</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="location"
+                    placeholder="location"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Event type</span>
+                  </label>
+                  <select
+                    type="text"
+                    name="eventType"
+                    className="input input-bordered"
+                    required
+                  >
+                    <option value="">Select an event type</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="workshop">Exhibition</option>
+                    <option value="workshop">Ceremony</option>
+                    <option value="workshop">Festival</option>
+                  </select>
                 </div>
                 <div className="">
                   <label className="label">

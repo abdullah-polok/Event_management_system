@@ -7,7 +7,8 @@ import {
   signOut,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { auth } from "../Firebase/firebase.config";
+import { auth, db } from "../Firebase/firebase.config";
+import { doc, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -17,7 +18,10 @@ const AuthProvider = ({ children }) => {
   ///Save event in the database
   const addEventFunc = (eventData) => {
     try {
-      console.log(eventData);
+      console.log("event data get:", eventData);
+      setDoc(doc(db, "eventData", user?.uid), {
+        eventData,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -55,7 +59,7 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, [user]);
-
+  // console.log(user);
   const userInfo = {
     user,
     signInUser,
