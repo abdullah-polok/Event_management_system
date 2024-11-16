@@ -24,27 +24,59 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [eventData, setEventData] = useState([]);
-
+  const [eventRegisterData, setEventRegisterData] = useState([]);
+  ///send event registered data into database
   const eventRegisterFunc = async (registerData) => {
     try {
-      console.log("event registerData get:", registerData);
+      // console.log("event registerData get:", registerData);
 
-      // setDoc(doc(db, "eventData", 1), {
-      //   eventData,
-      // });
+      //check if the data exist already or not
+      const docRef = doc(db, "eventRegister", registerData.eventId);
+      const docSnap = await getDoc(docRef);
 
-      const eventCollectionRef = collection(db, "eventRegister");
-      ///This function auto generate Document ID
-      const docRef = await addDoc(eventCollectionRef, registerData);
+      if (docSnap.exists()) {
+        Swal.fire({
+          text: "Already registered in this event",
+          icon: "error",
+        });
+      } else {
+        setDoc(doc(db, "eventRegister", registerData.eventId), {
+          registerData,
+        });
+        Swal.fire({
+          title: "Great!",
+          text: "Event registered successfully",
+          icon: "success",
+        });
+      }
 
-      console.log("Event registered sent successfully");
-      Swal.fire({
-        title: "Great!",
-        text: "Event registered successfully",
-        icon: "success",
-      });
+      // const eventCollectionRef = collection(db, "eventRegister");
+      // ///This function auto generate Document ID
+      // const docRef = await addDoc(eventCollectionRef, registerData);
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  ///Get all  date from eventdata collection
+  const getEventRegisterFunc = async () => {
+    if (user) {
+      try {
+        const eventCollectionRef = collection(db, "eventRegister");
+        const events = await getDocs(eventCollectionRef);
+        // Array to store data from each document
+        const eventsList = [];
+
+        // Loop through each document in the collection
+        events.forEach((doc) => {
+          // Push the document data with the document ID included
+          eventsList.push({ id: doc.id, ...doc.data() });
+        });
+
+        setEventRegisterData(eventsList);
+      } catch (error) {
+        console.log("Error fetching user data:", error);
+      }
     }
   };
 
@@ -122,6 +154,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
       getEventFunc();
+      getEventRegisterFunc();
     });
     return () => {
       unsubscribe();
@@ -138,6 +171,7 @@ const AuthProvider = ({ children }) => {
     addEventFunc,
     eventData,
     eventRegisterFunc,
+    eventRegisterData,
   };
 
   return (

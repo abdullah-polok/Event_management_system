@@ -14,6 +14,7 @@ const EachEventDetail = ({ event }) => {
   } = event;
 
   const { user, eventRegisterFunc } = useContext(AuthContext);
+
   ///call date object
   const startDate = new Date(starttime);
   const endDate = new Date(endtime);
@@ -40,9 +41,11 @@ const EachEventDetail = ({ event }) => {
     eventRegisterFunc(registerData);
   };
 
+  ////filter already registered event
+
   return (
     <div>
-      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl">
+      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6">
         <figure>
           <img className="w-64 h-16" src={imageLink} alt="Shoes" />
         </figure>
