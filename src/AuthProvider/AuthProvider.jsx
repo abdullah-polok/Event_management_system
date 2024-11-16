@@ -13,7 +13,9 @@ import {
   doc,
   getDoc,
   getDocs,
+  query,
   setDoc,
+  where,
 } from "firebase/firestore";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
@@ -30,29 +32,36 @@ const AuthProvider = ({ children }) => {
     try {
       // console.log("event registerData get:", registerData);
 
-      //check if the data exist already or not
-      const docRef = doc(db, "eventRegister", registerData.eventId);
-      const docSnap = await getDoc(docRef);
+      ///reference to the firebase collection
+      const eventRegisterCollection = collection(db, "eventRegister");
 
-      if (docSnap.exists()) {
+      //query if the data is exists or not
+      const dataQuery = query(
+        eventRegisterCollection,
+        where("eventId", "==", registerData.eventId),
+        where("email", "==", registerData.email)
+      );
+
+      const queryResult = await getDocs(dataQuery);
+
+      if (!queryResult.empty) {
         Swal.fire({
           text: "Already registered in this event",
           icon: "error",
         });
       } else {
-        setDoc(doc(db, "eventRegister", registerData.eventId), {
-          registerData,
-        });
+        // setDoc(doc(db, "eventRegister", registerData.eventId), {
+        //   registerData,
+        // });
+        const eventCollectionRef = collection(db, "eventRegister");
+        ///This function auto generate Document ID
+        const docRef = await addDoc(eventCollectionRef, registerData);
         Swal.fire({
           title: "Great!",
           text: "Event registered successfully",
           icon: "success",
         });
       }
-
-      // const eventCollectionRef = collection(db, "eventRegister");
-      // ///This function auto generate Document ID
-      // const docRef = await addDoc(eventCollectionRef, registerData);
     } catch (err) {
       console.log(err);
     }

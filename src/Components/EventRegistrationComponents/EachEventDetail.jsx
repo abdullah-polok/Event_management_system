@@ -37,6 +37,7 @@ const EachEventDetail = ({ event }) => {
     const registerData = {
       email: user?.email,
       eventId: id,
+      userId: user?.uid,
     };
     eventRegisterFunc(registerData);
   };
