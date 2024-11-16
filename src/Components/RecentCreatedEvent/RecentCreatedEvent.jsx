@@ -4,7 +4,13 @@ import EachEvent from "./EachEvent";
 
 const RecentCreatedEvent = () => {
   const { eventData, user } = useContext(AuthContext);
-  //   console.log(eventData);
+
+  ///filter created data by specific user
+
+  const filterEventData = eventData.filter(
+    (event) => event.email === user?.email
+  );
+
   return (
     <div>
       <div>
@@ -12,7 +18,7 @@ const RecentCreatedEvent = () => {
           Recent Created Events
         </div>
       </div>
-      {eventData.map((eachevent) => {
+      {filterEventData.map((eachevent) => {
         return <EachEvent eachevent={eachevent} key={eachevent.id} />;
       })}
     </div>
