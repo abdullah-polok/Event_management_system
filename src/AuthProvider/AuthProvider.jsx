@@ -25,6 +25,29 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [eventData, setEventData] = useState([]);
 
+  const eventRegisterFunc = async (registerData) => {
+    try {
+      console.log("event registerData get:", registerData);
+
+      // setDoc(doc(db, "eventData", 1), {
+      //   eventData,
+      // });
+
+      const eventCollectionRef = collection(db, "eventRegister");
+      ///This function auto generate Document ID
+      const docRef = await addDoc(eventCollectionRef, registerData);
+
+      console.log("Event registered sent successfully");
+      Swal.fire({
+        title: "Great!",
+        text: "Event registered successfully",
+        icon: "success",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   ///Get all  date from eventdata collection
   const getEventFunc = async () => {
     if (user) {
@@ -105,7 +128,6 @@ const AuthProvider = ({ children }) => {
     };
   }, [user]);
 
-  console.log(eventData);
   const userInfo = {
     user,
     signInUser,
@@ -115,6 +137,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     addEventFunc,
     eventData,
+    eventRegisterFunc,
   };
 
   return (

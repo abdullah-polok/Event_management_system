@@ -1,9 +1,10 @@
 import React from "react";
+import AllEvents from "../../Components/EventRegistrationComponents/AllEvents";
 
 const EventRegistration = () => {
   return (
     <div>
-      <h1>Event Registration</h1>
+      <AllEvents></AllEvents>
     </div>
   );
 };
