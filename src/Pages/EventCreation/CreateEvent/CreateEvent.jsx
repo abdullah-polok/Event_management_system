@@ -67,7 +67,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="mt-16 px-10">
+    <div className="mt-16 px-10 overflow-y-auto">
       <div className="bg-white  shadow-lg py-4 rounded-lg">
         <div className="px-6">
           <h1 className="text-2xl text-left">Add Event</h1>
