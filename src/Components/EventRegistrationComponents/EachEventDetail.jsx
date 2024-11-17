@@ -48,7 +48,7 @@ const EachEventDetail = ({ event }) => {
     <div>
       <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6">
         <figure>
-          <img className="w-64 h-16" src={imageLink} alt="Shoes" />
+          <img className="w-64 h-16" src={imageLink} alt="event" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>

@@ -7,14 +7,14 @@ const Main = () => {
   return (
     <div className="layout">
       <Navbar></Navbar>
-      <div className="flex">
+      <div className="flex h-screen">
         {/* Sidebar */}
         <div>
-          <nav className="sidebar">
+          <nav className="w-3/4">
             <LeftNavbar></LeftNavbar>
           </nav>
         </div>
-        <div className="mx-auto mt-10 flex-auto">
+        <div className="flex-1 overflow-y-auto">
           {/* Main Content Area */}
           <main className="main-content">
             <Outlet /> {/* Renders the active route's content */}
