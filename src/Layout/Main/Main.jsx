@@ -16,7 +16,7 @@ const Main = () => {
         </div>
         <div className="flex-1 overflow-y-auto">
           {/* Main Content Area */}
-          <main className="main-content">
+          <main className="main-content bg-stone-50 h-screen">
             <Outlet /> {/* Renders the active route's content */}
           </main>
         </div>
