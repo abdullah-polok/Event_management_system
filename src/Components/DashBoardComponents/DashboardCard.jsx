@@ -5,13 +5,17 @@ import createdEvent from "../../assets/Images/Dashboard/accept.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import RegisteredModal from "../../Pages/Dashboard/RegisteredModal";
 import HostedModal from "../../Pages/Dashboard/HostedModal";
+import UpcomingModal from "../../Pages/Dashboard/UpcomingModal";
 const DashboardCard = () => {
   const { eventData, eventRegisterData, user } = useContext(AuthContext);
 
   const eventHosted = eventData.filter((event) => event.email === user?.email);
+
   const eventRegisteredFilter = eventRegisterData.filter(
     (event) => event.email === user?.email
   );
+
+  const upcomingEvent = 0;
   return (
     <div className="lg:flex flex-row-reverse justify-center gap-10  px-10 overflow-y-auto">
       <div
@@ -35,7 +39,10 @@ const DashboardCard = () => {
           eventRegisteredFilter={eventRegisteredFilter}
         ></RegisteredModal>
       </div>
-      <div className="bg-[#14bc9c] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5">
+      <div
+        onClick={() => document.getElementById("my_modal_6").showModal()}
+        className="bg-[#14bc9c] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
+      >
         <div className="flex gap-3">
           <div className="bg-[#FFFFFF24] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -49,7 +56,9 @@ const DashboardCard = () => {
         <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-6">
           Number of events:
         </div>
+        <UpcomingModal></UpcomingModal>
       </div>
+
       <div
         onClick={() => document.getElementById("my_modal_5").showModal()}
         className="bg-[#fb7c73] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5"

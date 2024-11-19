@@ -10,6 +10,16 @@ const CreateEvent = () => {
 
   const apiKeys = "1ba08fcb8d889501df3573b6ada7b5a4";
 
+  ///creat time format template
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
   const handleEvent = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,11 +28,20 @@ const CreateEvent = () => {
     const endtime = form.endtime.value;
     const location = form.location.value;
     const eventType = form.eventType.value;
+
+    ///call date object
+    const startDate = new Date(starttime);
+    const endDate = new Date(endtime);
+
+    ///format the time
+    const formatedStartDate = startDate.toLocaleString("en-US", options);
+    const formatedEndDate = endDate.toLocaleString("en-US", options);
+
     const eventData = {
       email: user?.email,
       name: event,
-      starttime: starttime,
-      endtime: endtime,
+      starttime: formatedStartDate,
+      endtime: formatedEndDate,
       location: location,
       eventType: eventType,
       imageLink: imgUrl,

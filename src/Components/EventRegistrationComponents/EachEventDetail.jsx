@@ -15,31 +15,15 @@ const EachEventDetail = ({ event }) => {
 
   const { user, eventRegisterFunc } = useContext(AuthContext);
 
-  ///call date object
-  const startDate = new Date(starttime);
-  const endDate = new Date(endtime);
-
-  ///creat time format template
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-
-  ///format the time
-  const formatedStartDate = startDate.toLocaleString("en-US", options);
-  const formatedEndDate = endDate.toLocaleString("en-US", options);
+  console.log(name, starttime);
 
   const hadleEventRegister = () => {
     const registerData = {
       email: user?.email,
       eventId: id,
       userId: user?.uid,
-      starttime: formatedStartDate,
-      endtime: formatedEndDate,
+      starttime: starttime,
+      endtime: endtime,
       name: name,
       location: location,
     };
@@ -58,7 +42,7 @@ const EachEventDetail = ({ event }) => {
           <h2 className="card-title">{name}</h2>
           <p>type: {eventType}</p>
           <p>
-            {formatedStartDate} - {formatedEndDate}
+            {starttime} - {endtime}
           </p>
           <p className="text-sm">location: {location}</p>
           <div className="card-actions justify-end">
