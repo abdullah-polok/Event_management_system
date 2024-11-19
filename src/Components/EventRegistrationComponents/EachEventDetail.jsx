@@ -15,8 +15,6 @@ const EachEventDetail = ({ event }) => {
 
   const { user, eventRegisterFunc } = useContext(AuthContext);
 
-  console.log(name, starttime);
-
   const hadleEventRegister = () => {
     const registerData = {
       email: user?.email,
@@ -34,7 +32,10 @@ const EachEventDetail = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6">
+      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6 relative">
+        <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#67946e] bg-[#dcecdd]">
+          New
+        </div>
         <figure>
           <img className="w-64 h-16" src={imageLink} alt="event" />
         </figure>

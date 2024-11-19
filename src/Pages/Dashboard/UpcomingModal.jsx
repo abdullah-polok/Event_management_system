@@ -18,18 +18,12 @@ const UpcomingModal = () => {
     hour12: true,
   };
 
-  const optionsData = {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
   // Format the date
-  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(today);
+  const formattedDateToday = new Intl.DateTimeFormat("en-US", options).format(
+    today
+  );
 
-  console.log(formattedDate);
+  console.log(formattedDateToday);
 
   return (
     <div>
@@ -45,7 +39,11 @@ const UpcomingModal = () => {
               <p className="py-1">
                 {event.starttime}-{event.endtime}
               </p>
-              <p className="flex items-center gap-2 mt-2"></p>
+              {formattedDateToday === event.starttime ? (
+                <p className="flex items-center gap-2 mt-2">true</p>
+              ) : (
+                <p className="flex items-center gap-2 mt-2">false</p>
+              )}
             </div>
           ))}
           <div className="modal-action">
