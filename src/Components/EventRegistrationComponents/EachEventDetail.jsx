@@ -38,6 +38,10 @@ const EachEventDetail = ({ event }) => {
       email: user?.email,
       eventId: id,
       userId: user?.uid,
+      starttime: formatedStartDate,
+      endtime: formatedEndDate,
+      name: name,
+      location: location,
     };
     eventRegisterFunc(registerData);
   };

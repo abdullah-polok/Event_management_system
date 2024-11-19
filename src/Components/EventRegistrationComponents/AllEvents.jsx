@@ -5,7 +5,7 @@ import EachEventDetail from "./EachEventDetail";
 const AllEvents = () => {
   const { eventData } = useContext(AuthContext);
   return (
-    <div className="lg:flex  flex-row-reverse justify-center gap-10 px-10">
+    <div className="grid lg:grid-cols-2 grid-cols-1 justify-center gap-10 px-10">
       {eventData.map((event) => (
         <EachEventDetail event={event} key={event.id} />
       ))}

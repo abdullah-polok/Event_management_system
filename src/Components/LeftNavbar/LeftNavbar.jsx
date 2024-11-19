@@ -6,7 +6,7 @@ import register from "../../assets/Images/add.png";
 import feedback from "../../assets/Images/best-customer-experience.png";
 const LeftNavbar = () => {
   return (
-    <div className="bg-[#447af4] min-h-screen">
+    <div className="bg-[#447af4] h-screen w-28">
       <div className="px-6 py-10">
         <div className="bg-[#FFFFFF24] rounded-lg p-2">
           <Link to={"/dashboard"} className="text-base text-white  rounded-sm ">

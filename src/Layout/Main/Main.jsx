@@ -10,7 +10,7 @@ const Main = () => {
       <div className="flex h-screen">
         {/* Sidebar */}
         <div>
-          <nav className="w-3/4">
+          <nav className="">
             <LeftNavbar></LeftNavbar>
           </nav>
         </div>
