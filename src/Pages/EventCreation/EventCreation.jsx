@@ -3,7 +3,7 @@ import CreateEvent from "./CreateEvent/CreateEvent";
 
 const EventCreation = () => {
   return (
-    <div>
+    <div className="overflow-y-scroll scrollbar-hide">
       <CreateEvent></CreateEvent>
     </div>
   );

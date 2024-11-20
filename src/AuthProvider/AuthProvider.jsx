@@ -27,6 +27,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [eventData, setEventData] = useState([]);
   const [eventRegisterData, setEventRegisterData] = useState([]);
+  const [chartData, setChartData] = useState([]);
+
   ///send event registered data into database
   const eventRegisterFunc = async (registerData) => {
     try {
@@ -170,6 +172,8 @@ const AuthProvider = ({ children }) => {
     };
   }, [user]);
 
+  useEffect(() => {}, [eventData]);
+
   const userInfo = {
     user,
     signInUser,
@@ -181,8 +185,9 @@ const AuthProvider = ({ children }) => {
     eventData,
     eventRegisterFunc,
     eventRegisterData,
+    chartData,
+    setChartData,
   };
-
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
