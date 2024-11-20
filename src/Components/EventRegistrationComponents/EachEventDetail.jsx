@@ -45,7 +45,6 @@ const EachEventDetail = ({ event }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     funllDate
   );
-  console.log(parseInt(formattedDate));
 
   return (
     <div>
@@ -76,12 +75,27 @@ const EachEventDetail = ({ event }) => {
           </p>
           <p className="text-sm">location: {location}</p>
           <div className="card-actions justify-end">
-            <button
-              onClick={hadleEventRegister}
-              className="btn bg-[#447af4] text-white"
-            >
-              Register Now
-            </button>
+            {parseInt(formattedTodayDate) < parseInt(formattedDate) ? (
+              <button
+                onClick={hadleEventRegister}
+                className="btn bg-[#447af4] text-white"
+              >
+                Register Now
+              </button>
+            ) : parseInt(formattedTodayDate) > parseInt(formattedDate) ? (
+              <button className="btn bg-[gray] text-white disabled">
+                Finished
+              </button>
+            ) : (
+              parseInt(formattedTodayDate) === parseInt(formattedDate) && (
+                <button
+                  onClick={hadleEventRegister}
+                  className="btn bg-[#447af4] text-white"
+                >
+                  Register Now
+                </button>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -90,3 +104,12 @@ const EachEventDetail = ({ event }) => {
 };
 
 export default EachEventDetail;
+
+{
+  /* <button
+onClick={hadleEventRegister}
+className="btn bg-[#447af4] text-white"
+>
+Register Now
+</button> */
+}

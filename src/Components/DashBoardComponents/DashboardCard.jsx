@@ -5,7 +5,7 @@ import createdEvent from "../../assets/Images/Dashboard/accept.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import RegisteredModal from "../../Pages/Dashboard/RegisteredModal";
 import HostedModal from "../../Pages/Dashboard/HostedModal";
-import UpcomingModal from "../../Pages/Dashboard/UpcomingModal";
+import UpcomingModal from "../../Pages/Dashboard/UpcomingModal/UpcomingModal";
 const DashboardCard = () => {
   const { eventData, eventRegisterData, user } = useContext(AuthContext);
 
@@ -15,9 +15,8 @@ const DashboardCard = () => {
     (event) => event.email === user?.email
   );
 
-  const upcomingEvent = 0;
   return (
-    <div className="lg:flex flex-row-reverse justify-center gap-10  px-10 overflow-y-auto">
+    <div className="grid lg:grid-cols-3 grid-cols-1 justify-items-center overflow-y-auto">
       <div
         onClick={() => document.getElementById("my_modal_4").showModal()}
         className=" bg-[#1c73f3] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-6"
@@ -39,6 +38,7 @@ const DashboardCard = () => {
           eventRegisteredFilter={eventRegisteredFilter}
         ></RegisteredModal>
       </div>
+
       <div
         onClick={() => document.getElementById("my_modal_6").showModal()}
         className="bg-[#14bc9c] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
