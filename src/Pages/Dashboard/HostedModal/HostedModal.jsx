@@ -1,4 +1,5 @@
 import React from "react";
+import EachHostedModal from "./EachHostedModal";
 
 const HostedModal = ({ eventHosted }) => {
   return (
@@ -7,16 +8,7 @@ const HostedModal = ({ eventHosted }) => {
       <dialog id="my_modal_5" className="modal">
         <div className="modal-box w-11/12 max-w-5xl text-white bg-[#fb7c73] ">
           {eventHosted.map((event, index) => (
-            <div
-              key={index}
-              className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto"
-            >
-              <h3 className="font-bold text-lg">{event.name}</h3>
-              <p className="py-1">
-                {event.starttime} - {event.endtime}
-              </p>
-              <p className="flex items-center gap-2 mt-2"></p>
-            </div>
+            <EachHostedModal key={index} event={event}></EachHostedModal>
           ))}
           <div className="modal-action">
             <form method="dialog">

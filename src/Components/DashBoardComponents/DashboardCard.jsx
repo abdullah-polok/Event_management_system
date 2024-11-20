@@ -4,7 +4,7 @@ import upcomingevent from "../../assets/Images/Dashboard/upcoming.png";
 import createdEvent from "../../assets/Images/Dashboard/accept.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import RegisteredModal from "../../Pages/Dashboard/RegisteredModal";
-import HostedModal from "../../Pages/Dashboard/HostedModal";
+import HostedModal from "../../Pages/Dashboard/HostedModal/HostedModal";
 import UpcomingModal from "../../Pages/Dashboard/UpcomingModal/UpcomingModal";
 const DashboardCard = () => {
   const { eventData, eventRegisterData, user } = useContext(AuthContext);
@@ -54,7 +54,7 @@ const DashboardCard = () => {
           <h1 className="text-lg">Upcoming events</h1>
         </div>
         <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-6">
-          Number of events:
+          Upcoming events details
         </div>
         <UpcomingModal></UpcomingModal>
       </div>

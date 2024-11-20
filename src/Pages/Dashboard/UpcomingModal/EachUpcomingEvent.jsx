@@ -1,7 +1,8 @@
 import React from "react";
+import { FaLocationDot } from "react-icons/fa6";
 
 const EachUpcomingEvent = ({ event }) => {
-  const { name, starttime, endtime } = event;
+  const { name, starttime, endtime, location } = event;
 
   ////set time format
   const options = { day: "numeric" };
@@ -27,7 +28,10 @@ const EachUpcomingEvent = ({ event }) => {
         <div className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto">
           <h3 className="font-bold text-lg">{name}</h3>
           <p className="py-1">
-            {starttime}-{endtime}
+            {starttime} - {endtime}
+          </p>
+          <p className="flex items-center gap-2 mt-2">
+            <FaLocationDot className="text-white" /> {location}
           </p>
         </div>
       )}
