@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase.config";
 
 const Navbar = () => {
-  const { setUser, setLoading } = useContext(AuthContext);
+  const { setUser, setLoading, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleUser = () => {
     setLoading(true);
@@ -34,10 +34,7 @@ const Navbar = () => {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+              <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
             </div>
           </div>
           <ul

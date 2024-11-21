@@ -64,30 +64,31 @@ const Register = () => {
       });
       return;
     }
-    createUser(email, password)
-      .then((res) => {
-        // console.log(res.user);
-        const user = res.user;
+    if (imgUrl !== "")
+      createUser(email, password)
+        .then((res) => {
+          // console.log(res.user);
+          const user = res.user;
 
-        return updateProfile(user, {
-          displayName: name,
-          photoURL: imgUrl,
-        }).then(() => {
-          sendEmailVerification(user).then(() => {
-            toast("Verification email sent");
+          return updateProfile(user, {
+            displayName: name,
+            photoURL: imgUrl,
+          }).then(() => {
+            sendEmailVerification(user).then(() => {
+              toast("Verification email sent");
+            });
+            toast("User created successfully");
+            //Reset login form
+            e.target.reset();
+            ///Navigate to Home
+            navigate("/");
           });
-          toast("User created successfully");
-          //Reset login form
-          e.target.reset();
-          ///Navigate to Home
-          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setRegisterError(err.message);
+          toast(err.message);
         });
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setRegisterError(err.message);
-        toast(err.message);
-      });
   };
 
   const handleFileChange = (event) => {
