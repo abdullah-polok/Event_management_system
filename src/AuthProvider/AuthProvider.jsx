@@ -190,7 +190,7 @@ const AuthProvider = ({ children }) => {
     chartData,
     setChartData,
   };
-  console.log(user);
+
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
