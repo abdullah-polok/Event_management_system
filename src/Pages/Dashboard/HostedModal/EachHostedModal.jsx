@@ -10,12 +10,6 @@ const EachHostedModal = ({ event }) => {
   const eventIDFilter = eventRegisterData.filter(
     (event) => event.eventId === id
   );
-  const chartInfo = [
-    {
-      name: name,
-      participates: eventIDFilter.length,
-    },
-  ];
 
   // ///check predata exist into the charData state or not
   // useEffect(() => {

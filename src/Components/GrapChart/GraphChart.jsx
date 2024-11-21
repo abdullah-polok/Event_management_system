@@ -14,13 +14,14 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const GraphChart = () => {
   const { eventRegisterData, eventData, chartData } = useContext(AuthContext);
 
-  console.log(eventData);
+  const xData = eventData.map((event) => event.name);
+
   return (
     <ResponsiveContainer width="75%" height={500}>
       <BarChart data={eventData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis dataKey="starttime" />
+        <YAxis dataKey="100" />
         <Tooltip />
         <Legend />
         <Bar dataKey="Event name" fill="#8884d8" />

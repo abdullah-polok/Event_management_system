@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleUser = () => {
     logoutUser();
-    navigate("/login");
+    navigate("/");
   };
   return (
     <div className="navbar bg-base-100 shadow shadow-md">

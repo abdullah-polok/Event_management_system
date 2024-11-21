@@ -7,41 +7,54 @@ import EventCreation from "../Pages/EventCreation/EventCreation";
 import EventRegistration from "../Pages/EventRegistration/EventRegistration";
 import Feedback from "../Pages/Feedback/Feedback";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
   {
     path: "/",
     element: <Main></Main>,
     children: [
       {
-        path: "/home",
-        element: <Home></Home>,
-      },
-      {
         path: "/eventcreation",
-        element: <EventCreation></EventCreation>,
+        element: (
+          <PrivateRouter>
+            <EventCreation></EventCreation>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/eventregistration",
-        element: <EventRegistration></EventRegistration>,
+        element: (
+          <PrivateRouter>
+            <EventRegistration></EventRegistration>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/feedback",
-        element: <Feedback></Feedback>,
+        element: (
+          <PrivateRouter>
+            <Feedback></Feedback>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRouter>
+            <Dashboard></Dashboard>
+          </PrivateRouter>
+        ),
       },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login></Login>,
-  },
-  {
-    path: "/register",
-    element: <Register></Register>,
   },
 ]);
 

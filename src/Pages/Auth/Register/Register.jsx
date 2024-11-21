@@ -73,7 +73,7 @@ const Register = () => {
           //Reset login form
           e.target.reset();
           ///Navigate to Home
-          navigate("/login");
+          navigate("/");
         });
       })
       .catch((err) => {
@@ -145,7 +145,7 @@ const Register = () => {
             </div>
           </form>
           <div className="px-10 py-4">
-            <Link to={"/login"} className="text-[#447af4]">
+            <Link to={"/"} className="text-[#447af4]">
               Already,have a account?
             </Link>
           </div>
