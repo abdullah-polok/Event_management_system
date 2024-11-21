@@ -25,29 +25,39 @@ const LeftNavbar = () => {
       </div>
       <div className="px-6 py-10">
         <div className="bg-[#FFFFFF24] rounded-lg p-2">
-          <Link to={"/dashboard"} className="text-base text-white  rounded-sm ">
-            <img className="w-20 bg-slate-200 rounded-lg p-1" src={dashboard} />
+          <Link
+            to={"/dashboard"}
+            className="text-base text-white  rounded-sm flex gap-2 font-semibold"
+          >
+            <img className="w-8 bg-slate-200 rounded-lg p-1" src={dashboard} />
+            <p className="text-base">Dashboard</p>
           </Link>
         </div>
         <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
           <Link
             to={"/eventcreation"}
-            className="text-base text-white  rounded-sm "
+            className="text-base text-white  rounded-sm  flex gap-2 font-semibold"
           >
-            <img className="w-20 bg-slate-200 rounded-lg p-1" src={create} />
+            <img className="w-8 bg-slate-200 rounded-lg p-1" src={create} />
+            <p className="text-base">Event Creation</p>
           </Link>
         </div>
         <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
           <Link
             to={"/eventregistration"}
-            className="text-base text-white  rounded-sm "
+            className="text-base text-white  rounded-sm flex gap-2 font-semibold "
           >
-            <img className="w-20 bg-slate-200 rounded-lg p-1" src={register} />
+            <img className="w-8 bg-slate-200 rounded-lg p-1" src={register} />
+            <p className="text-base">Event Registration</p>
           </Link>
         </div>
         <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
-          <Link to={"/feedback"} className="text-base text-white  rounded-sm ">
-            <img className="w-20 bg-slate-200 rounded-lg p-1" src={feedback} />
+          <Link
+            to={"/feedback"}
+            className="text-base text-white  rounded-sm flex gap-2 font-semibold "
+          >
+            <img className="w-8 bg-slate-200 rounded-lg p-1" src={feedback} />
+            <p className="text-base">Feedback</p>
           </Link>
         </div>
       </div>
