@@ -1,13 +1,25 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase.config";
 
 const Navbar = () => {
-  const { logoutUser } = useContext(AuthContext);
+  const { setUser, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleUser = () => {
-    logoutUser();
-    navigate("/");
+    setLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser(null); // Clear user data after successful sign-out
+        navigate("/"); // Navigate to login page
+      })
+      .catch((error) => {
+        console.error("Error logging out: ", error); // Log any error that occurs
+      })
+      .finally(() => {
+        setLoading(false); // Reset loading state
+      });
   };
   return (
     <div className="navbar bg-base-100 shadow shadow-md">

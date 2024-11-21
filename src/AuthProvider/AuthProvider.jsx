@@ -154,11 +154,12 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  ///log out user
-  const logoutUser = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+  // ///log out user
+  // const logoutUser = () => {
+  //   setLoading(true);
+  //   setUser(null);
+  //   return signOut(auth);
+  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -176,9 +177,10 @@ const AuthProvider = ({ children }) => {
 
   const userInfo = {
     user,
+    setUser,
+    setLoading,
     signInUser,
     createUser,
-    logoutUser,
     sendEmailVerification,
     resetPassword,
     addEventFunc,
@@ -188,6 +190,7 @@ const AuthProvider = ({ children }) => {
     chartData,
     setChartData,
   };
+  console.log(user);
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
