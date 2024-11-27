@@ -239,7 +239,7 @@ const AuthProvider = ({ children }) => {
     eventFeedback,
     feedbackData,
   };
-  // console.log(feedbackData);
+
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Feedback from "../Feedbacks/Feedback";
 
 const RegisteredEventDetails = () => {
   const locations = useLocation();
   const result = locations.state?.event;
-  const { user, eventFeedback } = useContext(AuthContext);
+  const { user, eventFeedback, feedbackData } = useContext(AuthContext);
   const {
     eventId,
     userId,
@@ -32,7 +33,7 @@ const RegisteredEventDetails = () => {
     };
     eventFeedback(feedbackInfo);
   };
-
+  console.log(feedbackData);
   return (
     <div className="px-5">
       <div
@@ -58,14 +59,12 @@ const RegisteredEventDetails = () => {
       </div>
       <div className="flex justify-center mt-4">
         <div className="border-2 px-10 py-5 rounded-lg">
-          <h1 className="2/4">
-            Feedbacks Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Id, sed! Feedbacks Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Id, sed!
-          </h1>
-          <h1 className="2/4">Feedbacks</h1>
-          <h1 className="2/4">Feedbacks</h1>
-          <h1 className="2/4">Feedbacks</h1>
+          {feedbackData.map((feedbackInfo) => (
+            <Feedback
+              key={feedbackInfo.userId}
+              feedbackInfo={feedbackInfo}
+            ></Feedback>
+          ))}
         </div>
       </div>
       <div className="flex justify-center mt-4">
