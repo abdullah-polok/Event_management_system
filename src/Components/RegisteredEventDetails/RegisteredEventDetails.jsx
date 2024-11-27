@@ -28,7 +28,7 @@ const RegisteredEventDetails = () => {
       feedback: feedback,
       name: user?.displayName,
       userImage: user?.photoURL,
-      eventId: eventId,
+      eventIdFeed: eventId,
       userId: userId,
     };
     eventFeedback(feedbackInfo);
@@ -39,8 +39,7 @@ const RegisteredEventDetails = () => {
       <div
         className="hero h-3/4 rounded-xl"
         style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+          backgroundImage: `url(${imageLink})`,
         }}
       >
         <div className="hero-overlay bg-opacity-60 rounded-xl "></div>
@@ -58,13 +57,20 @@ const RegisteredEventDetails = () => {
         </div>
       </div>
       <div className="flex justify-center mt-4">
-        <div className="border-2 px-10 py-5 rounded-lg">
-          {feedbackData.map((feedbackInfo) => (
-            <Feedback
-              key={feedbackInfo.userId}
-              feedbackInfo={feedbackInfo}
-            ></Feedback>
-          ))}
+        <div>
+          {feedbackData.length ? (
+            <div className="px-10 py-5 rounded-lg">
+              {feedbackData.map((feedbackInfo) => (
+                <Feedback
+                  key={feedbackInfo.userId}
+                  feedbackInfo={feedbackInfo}
+                  eventId={eventId}
+                ></Feedback>
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
       <div className="flex justify-center mt-4">
