@@ -24,6 +24,7 @@ const EachEventDetail = ({ event }) => {
       endtime: endtime,
       name: name,
       location: location,
+      imageLink: imageLink,
     };
     eventRegisterFunc(registerData);
   };

@@ -28,6 +28,52 @@ const AuthProvider = ({ children }) => {
   const [eventData, setEventData] = useState([]);
   const [eventRegisterData, setEventRegisterData] = useState([]);
   const [chartData, setChartData] = useState([]);
+  const [feedbackData, setFeedbackData] = useState([]);
+  ////send event feedback data into database
+
+  const eventFeedback = async (feedbackData) => {
+    try {
+      console.log("event data get:", feedbackData);
+
+      // setDoc(doc(db, "eventData", 1), {
+      //   eventData,
+      // });
+
+      const eventCollectionRef = collection(db, "feedbackData");
+      ///This function auto generate Document ID
+      const docRef = await addDoc(eventCollectionRef, feedbackData);
+
+      Swal.fire({
+        title: "Great!",
+        text: "Event feedback sent successfully",
+        icon: "success",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  ///Get all data from feedbackdata Collection
+  const getEventFeedback = async () => {
+    if (user) {
+      try {
+        const eventCollectionRef = collection(db, "feedbackData");
+        const events = await getDocs(eventCollectionRef);
+        // Array to store data from each document
+        const feesbacksList = [];
+
+        // Loop through each document in the collection
+        events.forEach((doc) => {
+          // Push the document data with the document ID included
+          feesbacksList.push({ id: doc.id, ...doc.data() });
+        });
+
+        setFeedbackData(feesbacksList);
+      } catch (error) {
+        console.log("Error fetching user data:", error);
+      }
+    }
+  };
 
   ///send event registered data into database
   const eventRegisterFunc = async (registerData) => {
@@ -167,6 +213,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       getEventFunc();
       getEventRegisterFunc();
+      getEventFeedback();
     });
     return () => {
       unsubscribe();
@@ -189,8 +236,10 @@ const AuthProvider = ({ children }) => {
     eventRegisterData,
     chartData,
     setChartData,
+    eventFeedback,
+    feedbackData,
   };
-
+  // console.log(feedbackData);
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
