@@ -14,7 +14,7 @@ const RecentCreatedEvent = () => {
   return (
     <div>
       <div>
-        <div className="divider divider-start divider-neutral text-[#447af4] text-lg font-semibold overflow-y-hidden">
+        <div className="divider divider-start divider-neutral text-[#447af4] text-lg font-semibold overflow-y-hidden overflow-hidden">
           Recent Created Events
         </div>
       </div>

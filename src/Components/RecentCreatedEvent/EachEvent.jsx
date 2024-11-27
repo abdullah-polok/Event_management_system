@@ -5,7 +5,7 @@ const EachEvent = ({ eachevent }) => {
     eachevent;
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl mt-10">
+    <div className="card card-side bg-base-100 shadow-xl mt-10 overflow-y-hidden overflow-hidden">
       <figure>
         <img className="w-56 h-64" src={imageLink} alt="Movie" />
       </figure>

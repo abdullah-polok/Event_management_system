@@ -48,7 +48,7 @@ const EachEventDetail = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6 relative">
+      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6 relative ">
         {parseInt(formattedTodayDate) < parseInt(formattedDate) ? (
           <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
             Upcoming

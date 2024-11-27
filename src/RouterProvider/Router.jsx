@@ -8,6 +8,7 @@ import EventRegistration from "../Pages/EventRegistration/EventRegistration";
 import Feedback from "../Pages/Feedback/Feedback";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import RegisteredEventDetails from "../Components/RegisteredEventDetails/RegisteredEventDetails";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Dashboard></Dashboard>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/registered_event",
+        element: (
+          <PrivateRouter>
+            <RegisteredEventDetails></RegisteredEventDetails>
           </PrivateRouter>
         ),
       },
