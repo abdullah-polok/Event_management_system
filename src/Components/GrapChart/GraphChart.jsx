@@ -12,19 +12,23 @@ import {
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const GraphChart = () => {
-  const { eventRegisterData, eventData, chartData } = useContext(AuthContext);
+  const { eventRegisterData, eventData, chartData, user, feedbackData } =
+    useContext(AuthContext);
 
-  const xData = eventData.map((event) => event.name);
+  // console.log(eventData);
 
+  // const filteredEvent = eventData.filter(
+  //   (event) => event.email === user?.email
+  // );
+  // console.log(filteredEvent);
   return (
     <ResponsiveContainer width="75%" height={500}>
-      <BarChart data={eventData}>
-        <CartesianGrid strokeDasharray="3 3" />
+      <BarChart data={feedbackData}>
         <XAxis dataKey="name" />
-        <YAxis dataKey="100" />
+        <YAxis dataKey="feedbackCount" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Event name" fill="#8884d8" />
+        <Bar dataKey="feedbackCount" fill="#8884d8" />
       </BarChart>
     </ResponsiveContainer>
   );

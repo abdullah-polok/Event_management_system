@@ -60,15 +60,34 @@ const AuthProvider = ({ children }) => {
         const eventCollectionRef = collection(db, "feedbackData");
         const events = await getDocs(eventCollectionRef);
         // Array to store data from each document
-        const feesbacksList = [];
+        // const feesbacksList = [];
 
-        // Loop through each document in the collection
+        // // Loop through each document in the collection
+        // events.forEach((doc) => {
+        //   // Push the document data with the document ID included
+        //   feesbacksList.push({ id: doc.id, ...doc.data() });
+        // });
+        const eventCounts = {};
+
         events.forEach((doc) => {
-          // Push the document data with the document ID included
-          feesbacksList.push({ id: doc.id, ...doc.data() });
+          const feedback = doc.data();
+          const eventId = feedback.eventName;
+
+          if (eventCounts[eventId]) {
+            eventCounts[eventId]++;
+          } else {
+            eventCounts[eventId] = 1;
+          }
         });
 
-        setFeedbackData(feesbacksList);
+        // Convert the object to an array of objects
+        const eventsArray = Object.entries(eventCounts).map(([key, value]) => ({
+          name: key,
+          feedbackCount: value,
+        }));
+
+        console.log(eventsArray);
+        setFeedbackData(eventsArray);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
@@ -239,7 +258,7 @@ const AuthProvider = ({ children }) => {
     eventFeedback,
     feedbackData,
   };
-
+  // console.log(feedbackData);
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

@@ -2,8 +2,7 @@ import React from "react";
 
 const Feedback = ({ feedbackInfo, eventId }) => {
   const { feedback, name, userImage, eventIdFeed, userId } = feedbackInfo;
-  console.log(eventId);
-  console.log(eventIdFeed);
+
   return (
     <div>
       {eventId === eventIdFeed ? (

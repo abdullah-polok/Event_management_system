@@ -30,10 +30,12 @@ const RegisteredEventDetails = () => {
       userImage: user?.photoURL,
       eventIdFeed: eventId,
       userId: userId,
+      eventName: name,
     };
     eventFeedback(feedbackInfo);
+    e.target.reset();
   };
-  console.log(feedbackData);
+  // console.log(feedbackData);
   return (
     <div className="px-5">
       <div
