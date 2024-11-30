@@ -17,13 +17,19 @@ const GraphChart = () => {
 
   // console.log(eventData);
 
-  // const filteredEvent = eventData.filter(
-  //   (event) => event.email === user?.email
-  // );
-  // console.log(filteredEvent);
+  const filteredEvent = eventData.filter(
+    (event) => event.email === user?.email
+  );
+
+  const filteredGraphData = feedbackCounter.filter((counter) =>
+    filteredEvent.some((event) => counter.name === event.name)
+  );
+
+  console.log(filteredGraphData);
+
   return (
     <ResponsiveContainer width="75%" height={500}>
-      <BarChart data={feedbackCounter}>
+      <BarChart data={filteredGraphData}>
         <XAxis dataKey="name" />
         <YAxis
           dataKey="feedbackCount"

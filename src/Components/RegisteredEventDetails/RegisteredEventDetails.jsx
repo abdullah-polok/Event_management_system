@@ -9,12 +9,8 @@ const RegisteredEventDetails = () => {
   const result = locations.state?.event;
   const { user, eventFeedback, feedbackData, eventData } =
     useContext(AuthContext);
-  const { eventId } = result;
-
-  const eventFilterDetail = eventData.filter((event) => event.id == eventId);
-
-  const { userId, email, name, starttime, endtime, location, imageLink } =
-    eventFilterDetail[0];
+  const { eventId, email, name, starttime, endtime, location, imageLink } =
+    result;
 
   console.log(feedbackData);
 
@@ -23,16 +19,17 @@ const RegisteredEventDetails = () => {
     const form = e.target;
     const feedback = form.feedback.value;
     const feedbackInfo = {
-      organizerEmail: email,
       feedback: feedback,
       name: user?.displayName,
       userImage: user?.photoURL,
       eventIdFeed: eventId,
-      userId: userId,
       eventName: name,
     };
     eventFeedback(feedbackInfo);
     e.target.reset();
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
   // console.log(feedbackData);
   return (
@@ -47,7 +44,7 @@ const RegisteredEventDetails = () => {
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-xl-">
             <h1 className="mb-5 text-5xl font-bold">{name}</h1>
-            <p className="text-sm">Organizer email : {email}</p>
+            {/* <p className="text-sm">Organizer email : {email}</p> */}
             <p className="text-sm mt-10">
               {starttime} - {endtime}
             </p>
