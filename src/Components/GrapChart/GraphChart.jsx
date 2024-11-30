@@ -25,7 +25,11 @@ const GraphChart = () => {
     <ResponsiveContainer width="75%" height={500}>
       <BarChart data={feedbackData}>
         <XAxis dataKey="name" />
-        <YAxis dataKey="feedbackCount" />
+        <YAxis
+          dataKey="feedbackCount"
+          allowDecimals={false} // Prevent non-integer values
+          tickFormatter={(tick) => Math.round(tick)} // Format ticks to integers
+        />
         <Tooltip />
         <Legend />
         <Bar dataKey="feedbackCount" fill="#8884d8" />
