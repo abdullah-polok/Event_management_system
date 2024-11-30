@@ -53,10 +53,10 @@ const RegisteredEventDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="w-2/4 mx-auto mt-4  border-[#447af4] rounded-lg">
         <div>
           {feedbackData.length ? (
-            <div className="px-10 py-5 rounded-lg">
+            <div className=" px-10 py-5 rounded-lg">
               {feedbackData.map((feedbackInfo) => (
                 <Feedback
                   key={feedbackInfo.userId}
@@ -70,7 +70,7 @@ const RegisteredEventDetails = () => {
           )}
         </div>
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="w-2/4 mt-4 mx-auto">
         <form onSubmit={handlefeedback}>
           <div className="form-control">
             <textarea
@@ -81,7 +81,7 @@ const RegisteredEventDetails = () => {
             ></textarea>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-[#447af4] text-white">
+            <button className="btn w-36 bg-[#447af4] text-white mx-auto">
               submit feedback
             </button>
           </div>
