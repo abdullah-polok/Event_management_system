@@ -7,9 +7,13 @@ import Feedback from "../Feedbacks/Feedback";
 const RegisteredEventDetails = () => {
   const locations = useLocation();
   const result = locations.state?.event;
-  const { user, eventFeedback, feedbackData } = useContext(AuthContext);
+  const { user, eventFeedback, feedbackData, eventData } =
+    useContext(AuthContext);
+  const { eventId } = result;
+
+  const eventFilterDetail = eventData.filter((event) => event.id == eventId);
+
   const {
-    eventId,
     userId,
     email,
     name,
@@ -18,13 +22,14 @@ const RegisteredEventDetails = () => {
     location,
     eventType,
     imageLink,
-  } = result;
+  } = eventFilterDetail[0];
 
   const handlefeedback = (e) => {
     e.preventDefault();
     const form = e.target;
     const feedback = form.feedback.value;
     const feedbackInfo = {
+      organizerEmail: email,
       feedback: feedback,
       name: user?.displayName,
       userImage: user?.photoURL,
@@ -48,12 +53,13 @@ const RegisteredEventDetails = () => {
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-xl-">
             <h1 className="mb-5 text-5xl font-bold">{name}</h1>
-            <p className="mb-5">
+            <p className="text-base">Organizer email : {email}</p>
+            <p className="text-sm mb-5">
               {starttime} - {endtime}
             </p>
             <div className="flex  justify-center gap-2">
               <FaLocationDot className="text-white" />
-              <p className="mb-5">{location}</p>
+              <p className="mb-5 text-sm">{location}</p>
             </div>
           </div>
         </div>
