@@ -21,7 +21,6 @@ const EachUpcomingEvent = ({ event }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     funllDate
   );
-  console.log(formattedDate > formattedTodayDate);
   return (
     <div>
       {formattedDate > formattedTodayDate && (

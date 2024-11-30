@@ -9,6 +9,7 @@ import Feedback from "../Pages/Feedback/Feedback";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import RegisteredEventDetails from "../Components/RegisteredEventDetails/RegisteredEventDetails";
+import MyRegistered from "../Pages/Dashboard/RegisteredModal/MyRegistered";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <RegisteredEventDetails></RegisteredEventDetails>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myregistered",
+        element: (
+          <PrivateRouter>
+            <MyRegistered></MyRegistered>
           </PrivateRouter>
         ),
       },

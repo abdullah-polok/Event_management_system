@@ -3,9 +3,11 @@ import myevent from "../../assets/Images/Dashboard/user.png";
 import upcomingevent from "../../assets/Images/Dashboard/upcoming.png";
 import createdEvent from "../../assets/Images/Dashboard/accept.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import RegisteredModal from "../../Pages/Dashboard/RegisteredModal";
+import RegisteredModal from "../../Pages/Dashboard/RegisteredModal/RegisteredModal";
 import HostedModal from "../../Pages/Dashboard/HostedModal/HostedModal";
 import UpcomingModal from "../../Pages/Dashboard/UpcomingModal/UpcomingModal";
+import EachRegisteredModalDetails from "../../Pages/Dashboard/RegisteredModal/EachRegisteredDetails";
+import { Link } from "react-router-dom";
 const DashboardCard = () => {
   const { eventData, eventRegisterData, user } = useContext(AuthContext);
 
@@ -17,26 +19,30 @@ const DashboardCard = () => {
 
   return (
     <div className="grid lg:grid-cols-3 grid-cols-1 justify-items-center overflow-y-auto">
-      <div
-        onClick={() => document.getElementById("my_modal_4").showModal()}
-        className=" bg-[#1c73f3] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-6"
-      >
+      <div className=" bg-[#1c73f3] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
         <div className=" flex gap-3">
           <div className="bg-[#ffffff49] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
               className="w-14 h-12 bg-white py-1 px-2 rounded-lg "
               src={myevent}
-              alt=""
             />
           </div>
           <h1 className="text-lg">My registered events</h1>
         </div>
-        <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-6">
+        <div
+          onClick={() => document.getElementById("my_modal_4").showModal()}
+          className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4"
+        >
           Number of events: {eventRegisteredFilter.length}
         </div>
         <RegisteredModal
           eventRegisteredFilter={eventRegisteredFilter}
         ></RegisteredModal>
+        <Link to="/myregistered" state={{ eventRegisteredFilter }}>
+          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
+            View event details
+          </div>
+        </Link>
       </div>
 
       <div

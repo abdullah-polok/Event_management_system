@@ -20,7 +20,7 @@ const Main = () => {
           </div>
           <div className="flex-1 overflow-y-auto scrollbar scrollbar-thin">
             {/* Main Content Area */}
-            <main className="main-content bg-stone-50 h-screen">
+            <main className="main-content bg-slate-100 h-screen">
               <Outlet /> {/* Renders the active route's content */}
             </main>
           </div>

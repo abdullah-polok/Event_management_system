@@ -25,8 +25,6 @@ const GraphChart = () => {
     filteredEvent.some((event) => counter.name === event.name)
   );
 
-  console.log(filteredGraphData);
-
   return (
     <ResponsiveContainer width="75%" height={500}>
       <BarChart data={filteredGraphData}>

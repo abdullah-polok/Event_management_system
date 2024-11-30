@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const RegisteredModal = ({ eventRegisteredFilter }) => {
@@ -18,21 +18,19 @@ const RegisteredModal = ({ eventRegisteredFilter }) => {
           </div>
           {eventRegisteredFilter.map((event, index) => (
             <>
-              <Link to="/registered_event" state={{ event }}>
-                <div
-                  key={index}
-                  className="bg-[#FFFFFF24] p-4 rounded-lg mt-2 overflow-y-auto"
-                >
-                  <h3 className="font-bold text-lg">{event.name}</h3>
-                  <p className="py-1">
-                    {event.starttime} - {event.endtime}
-                  </p>
-                  <p className="flex items-center gap-2 mt-2">
+              <div
+                key={index}
+                className="bg-[#FFFFFF24] p-4 rounded-lg mt-2 overflow-y-auto"
+              >
+                <h3 className="font-bold text-lg">{event.name}</h3>
+                <p className="py-1">
+                  {event.starttime} - {event.endtime}
+                </p>
+                {/* <p className="flex items-center gap-2 mt-2">
                     <FaLocationDot className="text-white" />
                     {event.location}
-                  </p>
-                </div>
-              </Link>
+                  </p> */}
+              </div>
             </>
           ))}
         </div>

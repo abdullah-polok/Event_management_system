@@ -71,7 +71,7 @@ const EachEventDetail = ({ event }) => {
         <div className="card-body">
           <h2 className="card-title text-base">{name}</h2>
           <p>type: {eventType}</p>
-          <p>
+          <p className="">
             {starttime} - {endtime}
           </p>
           <p className="text-sm">location: {location}</p>
@@ -105,12 +105,3 @@ const EachEventDetail = ({ event }) => {
 };
 
 export default EachEventDetail;
-
-{
-  /* <button
-onClick={hadleEventRegister}
-className="btn bg-[#447af4] text-white"
->
-Register Now
-</button> */
-}

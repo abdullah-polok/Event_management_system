@@ -12,8 +12,6 @@ const RegisteredEventDetails = () => {
   const { eventId, email, name, starttime, endtime, location, imageLink } =
     result;
 
-  console.log(feedbackData);
-
   const handlefeedback = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -43,7 +41,7 @@ const RegisteredEventDetails = () => {
         <div className="hero-overlay bg-opacity-60 rounded-xl "></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-xl-">
-            <h1 className="mb-5 text-5xl font-bold">{name}</h1>
+            <h1 className="mb-5 text-2xl lg:text-5xl font-bold">{name}</h1>
             {/* <p className="text-sm">Organizer email : {email}</p> */}
             <p className="text-sm mt-10">
               {starttime} - {endtime}
