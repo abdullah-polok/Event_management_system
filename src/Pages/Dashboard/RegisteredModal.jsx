@@ -8,6 +8,14 @@ const RegisteredModal = ({ eventRegisteredFilter }) => {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl bg-[#1c73f3] text-white">
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button, it will close the modal */}
+              <button className="bg-[#ffffff49]  btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white ">
+                ✕
+              </button>
+            </form>
+          </div>
           {eventRegisteredFilter.map((event, index) => (
             <>
               <Link to="/registered_event" state={{ event }}>
@@ -27,12 +35,6 @@ const RegisteredModal = ({ eventRegisteredFilter }) => {
               </Link>
             </>
           ))}
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button, it will close the modal */}
-              <button className="btn bg-[#ffffff49] text-white">Close</button>
-            </form>
-          </div>
         </div>
       </dialog>
     </div>

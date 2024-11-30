@@ -49,12 +49,11 @@ const CreateEvent = () => {
 
     if (imgUrl !== "") {
       addEventFunc(eventData);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 3000);
+      e.target.reset();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
-
-    // e.target.reset();
   };
 
   const handleFileChange = (event) => {

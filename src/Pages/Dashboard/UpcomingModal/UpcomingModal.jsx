@@ -31,17 +31,19 @@ const UpcomingModal = () => {
 
       <dialog id="my_modal_6" className="modal">
         <div className="modal-box w-11/12 max-w-5xl bg-[#14bc9c] text-white">
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button, it will close the modal */}
+              <button className="bg-[#ffffff49]  btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white ">
+                ✕
+              </button>
+            </form>
+          </div>
           <Link to={"/eventregistration"}>
             {eventData.map((event, index) => (
               <EachUpcomingEvent key={index} event={event}></EachUpcomingEvent>
             ))}
           </Link>
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button, it will close the modal */}
-              <button className="btn bg-[#ffffff49] text-white">Close</button>
-            </form>
-          </div>
         </div>
       </dialog>
     </div>

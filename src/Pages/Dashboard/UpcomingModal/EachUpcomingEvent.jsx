@@ -5,7 +5,7 @@ const EachUpcomingEvent = ({ event }) => {
   const { name, starttime, endtime, location } = event;
 
   ////set time format
-  const options = { day: "numeric" };
+  const options = { day: "numeric", month: "numeric" };
 
   ///Seprate today's date from time format
   const today = new Date();
@@ -21,7 +21,7 @@ const EachUpcomingEvent = ({ event }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     funllDate
   );
-
+  console.log(formattedDate > formattedTodayDate);
   return (
     <div>
       {formattedDate > formattedTodayDate && (
