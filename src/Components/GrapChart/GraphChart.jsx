@@ -12,7 +12,7 @@ import {
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const GraphChart = () => {
-  const { eventRegisterData, eventData, chartData, user, feedbackData } =
+  const { eventRegisterData, eventData, chartData, user, feedbackCounter } =
     useContext(AuthContext);
 
   // console.log(eventData);
@@ -23,7 +23,7 @@ const GraphChart = () => {
   // console.log(filteredEvent);
   return (
     <ResponsiveContainer width="75%" height={500}>
-      <BarChart data={feedbackData}>
+      <BarChart data={feedbackCounter}>
         <XAxis dataKey="name" />
         <YAxis
           dataKey="feedbackCount"

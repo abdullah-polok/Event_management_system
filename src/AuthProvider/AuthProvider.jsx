@@ -29,6 +29,7 @@ const AuthProvider = ({ children }) => {
   const [eventRegisterData, setEventRegisterData] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [feedbackData, setFeedbackData] = useState([]);
+  const [feedbackCounter, setFeedbackCounter] = useState([]);
   ////send event feedback data into database
 
   const eventFeedback = async (feedbackData) => {
@@ -60,14 +61,14 @@ const AuthProvider = ({ children }) => {
         const eventCollectionRef = collection(db, "feedbackData");
         const events = await getDocs(eventCollectionRef);
         // Array to store data from each document
-        // const feesbacksList = [];
-
-        // // Loop through each document in the collection
-        // events.forEach((doc) => {
-        //   // Push the document data with the document ID included
-        //   feesbacksList.push({ id: doc.id, ...doc.data() });
-        // });
+        const feedbacksList = [];
         const eventCounts = {};
+
+        // Loop through each document in the collection
+        events.forEach((doc) => {
+          // Push the document data with the document ID included
+          feedbacksList.push({ id: doc.id, ...doc.data() });
+        });
 
         events.forEach((doc) => {
           const feedback = doc.data();
@@ -86,8 +87,8 @@ const AuthProvider = ({ children }) => {
           feedbackCount: value,
         }));
 
-        console.log(eventsArray);
-        setFeedbackData(eventsArray);
+        setFeedbackData(feedbacksList);
+        setFeedbackCounter(eventsArray);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
@@ -257,6 +258,7 @@ const AuthProvider = ({ children }) => {
     setChartData,
     eventFeedback,
     feedbackData,
+    feedbackCounter,
   };
   // console.log(feedbackData);
   return (

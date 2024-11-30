@@ -13,16 +13,10 @@ const RegisteredEventDetails = () => {
 
   const eventFilterDetail = eventData.filter((event) => event.id == eventId);
 
-  const {
-    userId,
-    email,
-    name,
-    starttime,
-    endtime,
-    location,
-    eventType,
-    imageLink,
-  } = eventFilterDetail[0];
+  const { userId, email, name, starttime, endtime, location, imageLink } =
+    eventFilterDetail[0];
+
+  console.log(feedbackData);
 
   const handlefeedback = (e) => {
     e.preventDefault();
@@ -53,11 +47,11 @@ const RegisteredEventDetails = () => {
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-xl-">
             <h1 className="mb-5 text-5xl font-bold">{name}</h1>
-            <p className="text-base">Organizer email : {email}</p>
-            <p className="text-sm mb-5">
+            <p className="text-sm">Organizer email : {email}</p>
+            <p className="text-sm mt-10">
               {starttime} - {endtime}
             </p>
-            <div className="flex  justify-center gap-2">
+            <div className="flex  justify-center gap-2 mt-4">
               <FaLocationDot className="text-white" />
               <p className="mb-5 text-sm">{location}</p>
             </div>
