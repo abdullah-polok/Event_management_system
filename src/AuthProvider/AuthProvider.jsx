@@ -192,12 +192,7 @@ const AuthProvider = ({ children }) => {
       ///This function auto generate Document ID
       const docRef = await addDoc(eventCollectionRef, eachEventData);
 
-      console.log("event data send successfully");
-      Swal.fire({
-        title: "Great!",
-        text: "Event created successfully",
-        icon: "success",
-      });
+      // console.log("event data send successfully");
     } catch (err) {
       console.log(err);
     }

@@ -3,6 +3,7 @@ import axios from "axios";
 import addevent from "../../../assets/Images/add-button.png";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import RecentCreatedEvent from "../../../Components/RecentCreatedEvent/RecentCreatedEvent";
+import { Swal } from "sweetalert2/dist/sweetalert2";
 const CreateEvent = () => {
   const { addEventFunc, user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -49,9 +50,14 @@ const CreateEvent = () => {
 
     if (imgUrl !== "") {
       addEventFunc(eventData);
-      e.target.reset();
+      // e.target.reset();
       setTimeout(() => {
         window.location.reload();
+        Swal.fire({
+          title: "Great!",
+          text: "Event created successfully",
+          icon: "success",
+        });
       }, 2000);
     }
   };

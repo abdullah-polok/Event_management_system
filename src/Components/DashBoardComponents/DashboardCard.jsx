@@ -18,8 +18,8 @@ const DashboardCard = () => {
   );
 
   return (
-    <div className="grid lg:grid-cols-3 grid-cols-1 justify-items-center overflow-y-auto">
-      <div className=" bg-[#1c73f3] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
+    <div className="grid xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 justify-items-center overflow-y-auto">
+      <div className=" bg-[#1c73f3] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
         <div className=" flex gap-3">
           <div className="bg-[#ffffff49] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -47,7 +47,7 @@ const DashboardCard = () => {
 
       <div
         onClick={() => document.getElementById("my_modal_6").showModal()}
-        className="bg-[#14bc9c] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
+        className="bg-[#14bc9c] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
       >
         <div className="flex gap-3">
           <div className="bg-[#FFFFFF24] rounded-lg text-center px-1 py-1  w-16 h-14">
@@ -67,7 +67,7 @@ const DashboardCard = () => {
 
       <div
         onClick={() => document.getElementById("my_modal_5").showModal()}
-        className="bg-[#fb7c73] rounder w-96 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
+        className="bg-[#fb7c73] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
       >
         <div className="flex gap-3">
           <div className="bg-[#FFFFFF24] rounded-lg text-center px-1 py-1  w-16 h-14">

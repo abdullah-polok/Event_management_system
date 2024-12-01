@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" min-h-screen  ">
+    <div className=" min-h-screen my-auto ">
       <div className="text-center">
         <h1 className="text-[#447af4] text-4xl font-semibold">
           Welcome to CampusConnect

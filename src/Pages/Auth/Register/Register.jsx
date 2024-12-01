@@ -177,7 +177,7 @@ const Register = () => {
             </div>
             <div className="">
               <label className="label">
-                <span className="label-text">Media</span>
+                <span className="label-text">Profile photo</span>
               </label>
               <input
                 type="file"

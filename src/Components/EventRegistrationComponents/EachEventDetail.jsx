@@ -49,7 +49,7 @@ const EachEventDetail = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full w-96 h-64 shadow-xl mt-6 relative ">
+      <div className="card bg-base-100 image-full xl:w-96 w-80 h-64 shadow-xl mt-6 relative ">
         {formattedTodayDate < formattedDate ? (
           <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
             Upcoming
@@ -69,9 +69,9 @@ const EachEventDetail = ({ event }) => {
           <img className="w-64 h-64" src={imageLink} alt="event" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title text-base">{name}</h2>
-          <p>type: {eventType}</p>
-          <p className="">
+          <h2 className="card-title xl:text-base text-sm">{name}</h2>
+          <p className="text-sm">type: {eventType}</p>
+          <p className="text-sm">
             {starttime} - {endtime}
           </p>
           <p className="text-sm">location: {location}</p>
