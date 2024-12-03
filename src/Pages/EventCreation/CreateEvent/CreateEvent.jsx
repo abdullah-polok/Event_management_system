@@ -4,6 +4,7 @@ import addevent from "../../../assets/Images/add-button.png";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import RecentCreatedEvent from "../../../Components/RecentCreatedEvent/RecentCreatedEvent";
 import { Swal } from "sweetalert2/dist/sweetalert2";
+import { serverTimestamp } from "firebase/firestore";
 const CreateEvent = () => {
   const { addEventFunc, user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -46,6 +47,7 @@ const CreateEvent = () => {
       location: location,
       eventType: eventType,
       imageLink: imgUrl,
+      createdAt: serverTimestamp(),
     };
 
     if (imgUrl !== "") {

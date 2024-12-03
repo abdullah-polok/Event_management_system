@@ -13,6 +13,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
   query,
   setDoc,
   where,
@@ -165,14 +166,18 @@ const AuthProvider = ({ children }) => {
         const events = await getDocs(eventCollectionRef);
         // Array to store data from each document
         const eventsList = [];
+        // Query to order by the 'createdAt' field
+        const q = query(eventCollectionRef, orderBy("createdAt"));
 
+        const querySnapshot = await getDocs(q);
         // Loop through each document in the collection
-        events.forEach((doc) => {
-          // Push the document data with the document ID included
-          eventsList.push({ id: doc.id, ...doc.data() });
-        });
+        const sortedEvents = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-        setEventData(eventsList);
+        console.log(sortedEvents);
+        setEventData(sortedEvents);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
