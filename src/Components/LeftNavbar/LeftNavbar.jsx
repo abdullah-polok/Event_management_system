@@ -13,7 +13,7 @@ const LeftNavbar = () => {
       {/* Sidebar */}
       <div
         className={`bg-[#447af4] h-screen transition-all duration-300 ${
-          isCollapsed ? "w-16" : "w-64"
+          isCollapsed ? "w-24" : "w-64"
         }`}
       >
         {/* User Info */}
