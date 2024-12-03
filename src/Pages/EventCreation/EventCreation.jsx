@@ -3,7 +3,7 @@ import CreateEvent from "./CreateEvent/CreateEvent";
 
 const EventCreation = () => {
   return (
-    <div className="scrollbar-thin ">
+    <div className="">
       <CreateEvent></CreateEvent>
     </div>
   );

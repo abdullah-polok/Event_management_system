@@ -7,7 +7,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Main = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div className="layout bg-[#FFFFFF36]">
+    <div className="layout">
       <Navbar></Navbar>
       {user && (
         <div className="flex h-screen">
@@ -18,9 +18,9 @@ const Main = () => {
               <LeftNavbar></LeftNavbar>
             </nav>
           </div>
-          <div className="flex-1 overflow-y-auto scrollbar scrollbar-thin">
+          <div className="flex-1 overflow-y-auto scrollbar-hide bg-slate-100">
             {/* Main Content Area */}
-            <main className="main-content bg-slate-100 h-screen">
+            <main className="main-content  h-screen">
               <Outlet /> {/* Renders the active route's content */}
             </main>
           </div>

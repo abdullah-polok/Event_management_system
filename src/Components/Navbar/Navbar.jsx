@@ -22,7 +22,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar bg-base-100  shadow-md">
+    <div className="navbar  shadow-md">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">CampusConnect</a>
       </div>

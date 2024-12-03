@@ -5,7 +5,7 @@ import EachEventDetail from "./EachEventDetail";
 const AllEvents = () => {
   const { eventData } = useContext(AuthContext);
   return (
-    <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center overflow-y-hidden">
+    <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
       {eventData.map((event) => (
         <EachEventDetail event={event} key={event.id} />
       ))}
