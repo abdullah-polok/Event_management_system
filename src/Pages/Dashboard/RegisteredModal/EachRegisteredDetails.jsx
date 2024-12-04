@@ -21,9 +21,6 @@ const EachRegisteredDetails = ({ event }) => {
             <p className="flex items-center text-sm gap-1">
               <FaLocationDot className="text-white" /> {location}
             </p>
-            {/* <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div> */}
           </div>
         </div>
       </Link>

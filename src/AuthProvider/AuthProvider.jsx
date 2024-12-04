@@ -175,8 +175,6 @@ const AuthProvider = ({ children }) => {
           id: doc.id,
           ...doc.data(),
         }));
-
-        console.log(sortedEvents);
         setEventData(sortedEvents);
       } catch (error) {
         console.log("Error fetching user data:", error);

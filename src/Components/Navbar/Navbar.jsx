@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase.config";
 
@@ -24,7 +24,9 @@ const Navbar = () => {
   return (
     <div className="navbar  shadow-md">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">CampusConnect</a>
+        <Link to={"/dashboard"} className="btn btn-ghost text-xl">
+          CampusConnect
+        </Link>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">

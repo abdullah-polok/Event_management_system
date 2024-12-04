@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
 
 const EachEventDetail = ({ event }) => {
+  const { user, eventRegisterFunc } = useContext(AuthContext);
+
   const {
     id,
     email,
@@ -12,8 +16,6 @@ const EachEventDetail = ({ event }) => {
     eventType,
     imageLink,
   } = event;
-
-  const { user, eventRegisterFunc } = useContext(AuthContext);
 
   const hadleEventRegister = () => {
     const registerData = {
@@ -26,7 +28,35 @@ const EachEventDetail = ({ event }) => {
       location: location,
       imageLink: imageLink,
     };
+
+    const subject = `Thank you for registering ${name}`;
+
     eventRegisterFunc(registerData);
+    const emailData = {
+      name: user?.displayName,
+      from_email: email,
+      to_email: user?.email,
+      eventname: name,
+      subject: subject,
+    };
+
+    emailjs
+      .send(
+        "service_cr5dd8h",
+        "template_lntfldw",
+        emailData,
+        "k4ruNgk8eV0OfinVM"
+      )
+      .then(
+        (response) => {
+          toast("Registration successful! Email notification sent");
+          // console.log("success", response.status, response.text);
+        },
+        (error) => {
+          toast("Failed to send email. Please try again.");
+          // console.error("Error:", error);
+        }
+      );
   };
 
   ////set time format
@@ -77,24 +107,30 @@ const EachEventDetail = ({ event }) => {
           <p className="text-sm">location: {location}</p>
           <div className="card-actions justify-end">
             {formattedTodayDate < formattedDate ? (
-              <button
-                onClick={hadleEventRegister}
-                className="btn bg-[#447af4] text-white"
-              >
-                Register Now
-              </button>
-            ) : formattedTodayDate > formattedDate ? (
-              <button className="btn bg-[gray] text-white disabled">
-                Finished
-              </button>
-            ) : (
-              formattedTodayDate === formattedDate && (
+              <>
                 <button
                   onClick={hadleEventRegister}
                   className="btn bg-[#447af4] text-white"
                 >
                   Register Now
                 </button>
+                <ToastContainer></ToastContainer>
+              </>
+            ) : formattedTodayDate > formattedDate ? (
+              <button className="btn bg-[gray] text-white disabled">
+                Finished
+              </button>
+            ) : (
+              formattedTodayDate === formattedDate && (
+                <>
+                  <button
+                    onClick={hadleEventRegister}
+                    className="btn bg-[#447af4] text-white"
+                  >
+                    Register Now
+                  </button>
+                  <ToastContainer></ToastContainer>
+                </>
               )
             )}
           </div>

@@ -11,7 +11,6 @@ const AllEvents = () => {
     const monthB = new Date(b.starttime).getMonth(); // Extract month (0-11)
     return monthA - monthB; // Compare months
   });
-  console.log(sortedEvent);
   return (
     <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
       {sortedEvent.map((event) => (
