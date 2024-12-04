@@ -21,6 +21,7 @@ import {
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import { auth, db } from "../../firebase.config";
+import emailjs from "@emailjs/browser";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -97,7 +98,7 @@ const AuthProvider = ({ children }) => {
   };
 
   ///send event registered data into database
-  const eventRegisterFunc = async (registerData) => {
+  const eventRegisterFunc = async (registerData, email) => {
     try {
       // console.log("event registerData get:", registerData);
 
@@ -125,9 +126,35 @@ const AuthProvider = ({ children }) => {
         const eventCollectionRef = collection(db, "eventRegister");
         ///This function auto generate Document ID
         const docRef = await addDoc(eventCollectionRef, registerData);
+
+        const subject = `Thank you for registering ${registerData.name}`;
+
+        const emailData = {
+          name: user?.displayName,
+          from_email: email,
+          to_email: user?.email,
+          eventname: registerData.name,
+          subject: subject,
+        };
+
+        emailjs
+          .send(
+            "service_cr5dd8h",
+            "template_lntfldw",
+            emailData,
+            "k4ruNgk8eV0OfinVM"
+          )
+          .then(
+            (response) => {
+              // console.log("success", response.status, response.text);
+            },
+            (error) => {
+              // console.error("Error:", error);
+            }
+          );
         Swal.fire({
           title: "Great!",
-          text: "Event registered successfully",
+          text: "Thank you for registering event,Email has been sent successfully.",
           icon: "success",
         });
       }

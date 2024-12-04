@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 
 const EachEventDetail = ({ event }) => {
@@ -29,34 +28,7 @@ const EachEventDetail = ({ event }) => {
       imageLink: imageLink,
     };
 
-    const subject = `Thank you for registering ${name}`;
-
-    eventRegisterFunc(registerData);
-    const emailData = {
-      name: user?.displayName,
-      from_email: email,
-      to_email: user?.email,
-      eventname: name,
-      subject: subject,
-    };
-
-    emailjs
-      .send(
-        "service_cr5dd8h",
-        "template_lntfldw",
-        emailData,
-        "k4ruNgk8eV0OfinVM"
-      )
-      .then(
-        (response) => {
-          toast("Registration successful! Email notification sent");
-          // console.log("success", response.status, response.text);
-        },
-        (error) => {
-          toast("Failed to send email. Please try again.");
-          // console.error("Error:", error);
-        }
-      );
+    eventRegisterFunc(registerData, email);
   };
 
   ////set time format
