@@ -79,10 +79,15 @@ const DashboardCard = () => {
           </div>
           <h1 className="text-lg">Hosted event</h1>
         </div>
-        <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-6">
+        <div className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
           Number of events: {eventHosted.length}
         </div>
         <HostedModal eventHosted={eventHosted}></HostedModal>
+        <Link to="/myhostedevent" state={{ eventHosted }}>
+          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
+            View hosted event details
+          </div>
+        </Link>
       </div>
     </div>
   );

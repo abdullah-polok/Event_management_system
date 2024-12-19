@@ -191,10 +191,9 @@ const AuthProvider = ({ children }) => {
       try {
         const eventCollectionRef = collection(db, "eventData");
         const events = await getDocs(eventCollectionRef);
-        // Array to store data from each document
-        const eventsList = [];
+
         // Query to order by the 'createdAt' field
-        const q = query(eventCollectionRef, orderBy("createdAt"));
+        const q = query(eventCollectionRef, orderBy("createdAt", "asc"));
 
         const querySnapshot = await getDocs(q);
         // Loop through each document in the collection
@@ -203,6 +202,7 @@ const AuthProvider = ({ children }) => {
           ...doc.data(),
         }));
         setEventData(sortedEvents);
+        console.log(sortedEvents);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }

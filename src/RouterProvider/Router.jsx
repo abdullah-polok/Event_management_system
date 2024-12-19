@@ -10,6 +10,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import RegisteredEventDetails from "../Components/RegisteredEventDetails/RegisteredEventDetails";
 import MyRegistered from "../Pages/Dashboard/RegisteredModal/MyRegistered";
+import MyHostedEvent from "../Components/HostedEvent/MyHostedEvent";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyRegistered></MyRegistered>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myhostedevent",
+        element: (
+          <PrivateRouter>
+            <MyHostedEvent></MyHostedEvent>
           </PrivateRouter>
         ),
       },

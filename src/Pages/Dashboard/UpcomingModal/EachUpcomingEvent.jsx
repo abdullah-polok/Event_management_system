@@ -21,9 +21,14 @@ const EachUpcomingEvent = ({ event }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     funllDate
   );
+
+  // Parse the dates with the current year (or adjust as needed)
+  const currentYear = new Date().getFullYear();
+  const startDate = new Date(`${currentYear}/${formattedTodayDate}`);
+  const endDate = new Date(`${currentYear}/${formattedDate}`);
   return (
     <div>
-      {formattedDate > formattedTodayDate && (
+      {endDate >= startDate && (
         <div className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto">
           <h3 className="font-bold text-lg">{name}</h3>
           <p className="py-1">

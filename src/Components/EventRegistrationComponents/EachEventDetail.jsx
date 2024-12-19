@@ -49,19 +49,26 @@ const EachEventDetail = ({ event }) => {
     funllDate
   );
 
+  // console.log(formattedTodayDate, formattedDate);
+
+  // Parse the dates with the current year (or adjust as needed)
+  const currentYear = new Date().getFullYear();
+  const startDate = new Date(`${currentYear}/${formattedTodayDate}`);
+  const endDate = new Date(`${currentYear}/${formattedDate}`);
+
   return (
     <div>
       <div className="card bg-base-100 image-full xl:w-96 w-80 h-64 shadow-xl mt-6 relative ">
-        {formattedTodayDate < formattedDate ? (
+        {startDate < endDate ? (
           <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
             Upcoming
           </div>
-        ) : formattedTodayDate > formattedDate ? (
+        ) : startDate > endDate ? (
           <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-red-700 font-semibold bg-red-100">
             Finished
           </div>
         ) : (
-          formattedTodayDate === formattedDate && (
+          startDate === endDate && (
             <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#1f97e6] font-semibold bg-sky-100">
               New
             </div>
@@ -78,7 +85,7 @@ const EachEventDetail = ({ event }) => {
           </p>
           <p className="text-sm">location: {location}</p>
           <div className="card-actions justify-end">
-            {formattedTodayDate < formattedDate ? (
+            {startDate < endDate ? (
               <>
                 <button
                   onClick={hadleEventRegister}
@@ -88,12 +95,12 @@ const EachEventDetail = ({ event }) => {
                 </button>
                 <ToastContainer></ToastContainer>
               </>
-            ) : formattedTodayDate > formattedDate ? (
+            ) : startDate > endDate ? (
               <button className="btn bg-[gray] text-white disabled">
                 Finished
               </button>
             ) : (
-              formattedTodayDate === formattedDate && (
+              startDate === endDate && (
                 <>
                   <button
                     onClick={hadleEventRegister}
