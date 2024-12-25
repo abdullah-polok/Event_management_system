@@ -32,8 +32,53 @@ const AuthProvider = ({ children }) => {
   const [chartData, setChartData] = useState([]);
   const [feedbackData, setFeedbackData] = useState([]);
   const [feedbackCounter, setFeedbackCounter] = useState([]);
-  ////send event feedback data into database
+  const [participant, setParticipant] = useState([]);
+  const [partiCounter, setPartiCounter] = useState([]);
 
+  ////
+  ///Get all data from Participantdata Collection
+  const getEventParticipant = async () => {
+    if (user) {
+      try {
+        const eventCollectionRef = collection(db, "attendence");
+        const events = await getDocs(eventCollectionRef);
+        // Array to store data from each document
+        const participantsList = [];
+        const participantCounts = {};
+
+        // Loop through each document in the collection
+        events.forEach((doc) => {
+          // Push the document data with the document ID included
+          participantsList.push({ id: doc.id, ...doc.data() });
+        });
+
+        events.forEach((doc) => {
+          const feedback = doc.data();
+          const eventId = feedback.eventName;
+
+          if (participantCounts[eventId]) {
+            participantCounts[eventId]++;
+          } else {
+            participantCounts[eventId] = 1;
+          }
+        });
+
+        // Convert the object to an array of objects
+        const eventsArray = Object.entries(participantCounts).map(
+          ([key, value]) => ({
+            name: key,
+            Partipants_Count: value,
+          })
+        );
+
+        setParticipant(participantsList);
+        setPartiCounter(eventsArray);
+      } catch (error) {
+        console.log("Error fetching user data:", error);
+      }
+    }
+  };
+  ////send event feedback data into database
   const eventFeedback = async (feedbackData) => {
     try {
       console.log("event data get:", feedbackData);
@@ -258,6 +303,7 @@ const AuthProvider = ({ children }) => {
       getEventFunc();
       getEventRegisterFunc();
       getEventFeedback();
+      getEventParticipant();
     });
     return () => {
       unsubscribe();
@@ -283,8 +329,10 @@ const AuthProvider = ({ children }) => {
     eventFeedback,
     feedbackData,
     feedbackCounter,
+    participant,
+    partiCounter,
   };
-  // console.log(feedbackData);
+  // console.log(partiCounter);
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

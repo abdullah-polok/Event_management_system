@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const EachHostedModal = ({ event }) => {
-  const { eventRegisterData, setChartData, chartData } =
+  const { eventRegisterData, setChartData, chartData, participant } =
     useContext(AuthContext);
 
   const { name, starttime, endtime, id } = event;
@@ -10,7 +10,10 @@ const EachHostedModal = ({ event }) => {
   const eventIDFilter = eventRegisterData.filter(
     (event) => event.eventId === id
   );
+  const partiIDFilter = participant.filter((event) => event.eventId === id);
 
+  console.log(participant);
+  // const eve
   // ///check predata exist into the charData state or not
   // useEffect(() => {
   //   setChartData((predata) => {
@@ -28,7 +31,8 @@ const EachHostedModal = ({ event }) => {
         <p className="py-1">
           {starttime} - {endtime}
         </p>
-        <p>Number of participates: {eventIDFilter.length}</p>
+        <p>Number of feedbacks: {eventIDFilter.length}</p>
+        <p>Number of participants: {partiIDFilter.length}</p>
       </div>
     </div>
   );
