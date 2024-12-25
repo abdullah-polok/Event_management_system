@@ -2,18 +2,13 @@ import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../../../firebase.config";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 const Attendence = () => {
-  ///Get data from local stoprage if available
-  const [specificEvent, setSpecificEvent] = useState(() => {
-    const storedEvent = localStorage.getItem("specificEvent");
-    return storedEvent ? JSON.parse(storedEvent) : null;
-  });
+  const navigate = useNavigate();
+  const [specificEvent, setSpecificEvent] = useState(null);
   const paramId = useParams();
   const { user } = useContext(AuthContext);
-
-  // const { name, email } = specificEvent;
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -39,7 +34,6 @@ const Attendence = () => {
   if (specificEvent != null) {
     console.log("specficEvent:", specificEvent);
   }
-
   const handleAttendence = async () => {
     try {
       const attenData = {
@@ -49,13 +43,11 @@ const Attendence = () => {
         username: user.displayName,
         orgEmail: specificEvent != null && specificEvent.email,
       };
-      console.log("attenData:", attenData);
 
       const eventCollectionRef = collection(db, "attendence");
-      ///This function auto generate Document ID
       const docRef = await addDoc(eventCollectionRef, attenData);
-      // console.log("event data send successfully");
       toast("Attendence succeed");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -63,6 +55,7 @@ const Attendence = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      {}
       <button
         onClick={handleAttendence}
         className="btn bg-blue-400 w-32 h-32 text-white text-base"
