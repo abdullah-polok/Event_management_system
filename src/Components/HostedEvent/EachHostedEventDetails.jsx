@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 import HostedModal from "../../Pages/Dashboard/HostedModal/HostedModal";
 import HostedevenQR from "./HostedevenQR";
 const EachHostedEventDetails = ({ event }) => {
-  const { id, name, location, starttime, endtime, eventId } = event;
-  console.log(id);
+  const { id, name, location, starttime, endtime } = event;
   return (
     <div>
-      <Link to={`/myhostedevent/${name}`}>
+      <Link to={`/myhostedevent/${name}`} state={{ event }}>
         <div className="card bg-base-100 image-full w-96 shadow-xl mt-6">
           <figure>
             <img src={cardColor} />

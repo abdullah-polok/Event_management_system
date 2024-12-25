@@ -1,8 +1,30 @@
-import React from "react";
-
+import { addDoc, collection } from "firebase/firestore";
+import React, { useContext } from "react";
+import { db } from "../../../firebase.config";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 const Attendence = () => {
-  const handleAttendence = () => {
-    console.log("click user");
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const result = location.state;
+  const { id, name, email, starttime, endtime } = result.event;
+  const handleAttendence = async () => {
+    try {
+      const attenData = {
+        eventId: id,
+        eventName: name,
+        userId: user.uid,
+        orgEmail: email,
+      };
+      const eventCollectionRef = collection(db, "attendence");
+      ///This function auto generate Document ID
+      const docRef = await addDoc(eventCollectionRef, attenData);
+      // console.log("event data send successfully");
+      toast("Attendence succeed");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -13,6 +35,7 @@ const Attendence = () => {
       >
         Present
       </button>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
