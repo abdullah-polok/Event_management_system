@@ -8,7 +8,7 @@ const EachHostedEventDetails = ({ event }) => {
   const { id, name, location, starttime, endtime } = event;
   return (
     <div>
-      <Link to={`/myhostedevent/${name}`} state={{ event }}>
+      <Link to={`/myhostedevent/${id}`} state={{ event }}>
         <div className="card bg-base-100 image-full w-96 shadow-xl mt-6">
           <figure>
             <img src={cardColor} />

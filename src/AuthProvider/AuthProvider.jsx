@@ -202,7 +202,6 @@ const AuthProvider = ({ children }) => {
           ...doc.data(),
         }));
         setEventData(sortedEvents);
-        console.log(sortedEvents);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }

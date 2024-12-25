@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myhostedevent/:eventname",
+        path: "/myhostedevent/:id",
         element: (
           <PrivateRouter>
             <Attendence></Attendence>
