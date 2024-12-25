@@ -11,6 +11,7 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import RegisteredEventDetails from "../Components/RegisteredEventDetails/RegisteredEventDetails";
 import MyRegistered from "../Pages/Dashboard/RegisteredModal/MyRegistered";
 import MyHostedEvent from "../Components/HostedEvent/MyHostedEvent";
+import Attendence from "../Components/Attendence/Attendence";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/attendence",
+    element: (
+      <PrivateRouter>
+        <Attendence></Attendence>
+      </PrivateRouter>
+    ),
   },
   {
     path: "/",
@@ -78,6 +87,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyHostedEvent></MyHostedEvent>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/myhostedevent/:eventname",
+        element: (
+          <PrivateRouter>
+            <Attendence></Attendence>
           </PrivateRouter>
         ),
       },
