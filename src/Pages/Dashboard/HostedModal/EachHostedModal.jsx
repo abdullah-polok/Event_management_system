@@ -12,7 +12,6 @@ const EachHostedModal = ({ event }) => {
   );
   const partiIDFilter = participant.filter((event) => event.eventId === id);
 
-  console.log(participant);
   // const eve
   // ///check predata exist into the charData state or not
   // useEffect(() => {

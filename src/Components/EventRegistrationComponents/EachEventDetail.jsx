@@ -31,49 +31,51 @@ const EachEventDetail = ({ event }) => {
     eventRegisterFunc(registerData, email);
   };
 
-  ////set time format
-  const options = { day: "numeric", month: "numeric" };
-
   ///Seprate today's date from time format
   const today = new Date();
-  const formattedTodayDate = new Intl.DateTimeFormat("en-US", options).format(
-    today
-  );
+  // Extract the year, month, and date
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth() + 1; // 0-indexed: January is 0
+  const currentDate = today.getDate();
+  console.log("Today date", currentYear, " ", currentMonth, " ", currentDate);
+  const dataString = starttime.replace(" at", "");
 
-  // Replace "at" with a space
-  const formattedString = starttime.replace(" at ", " ");
+  const dateObj = new Date(dataString);
 
-  /// separate Date from time format
-  const funllDate = new Date(formattedString);
-  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-    funllDate
-  );
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth() + 1;
+  const date = dateObj.getDate();
 
-  // console.log(formattedTodayDate, formattedDate);
-
-  // Parse the dates with the current year (or adjust as needed)
-  const currentYear = new Date().getFullYear();
-  const startDate = new Date(`${currentYear}/${formattedTodayDate}`);
-  const endDate = new Date(`${currentYear}/${formattedDate}`);
-
+  console.log("Database data", year, " ", month, " ", date);
   return (
     <div>
       <div className="card bg-base-100 image-full xl:w-96 w-80 h-64 shadow-xl mt-6 relative ">
-        {startDate < endDate ? (
-          <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
+        {year > currentYear ||
+        (year === currentYear && month > currentMonth) ||
+        (year === currentYear &&
+          month === currentMonth &&
+          date > currentDate) ? (
+          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
             Upcoming
           </div>
-        ) : startDate > endDate ? (
-          <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-red-700 font-semibold bg-red-100">
+        ) : year < currentYear ||
+          (year === currentYear && month < currentMonth) ||
+          (year === currentYear &&
+            month === currentMonth &&
+            date < currentDate) ? (
+          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-red-700 font-semibold bg-red-100">
             Finished
           </div>
         ) : (
-          startDate === endDate && (
-            <div className="absolute z-10 -top-3 -right-6  mr-2 p-1 rounded-lg text-[#1f97e6] font-semibold bg-sky-100">
+          year === currentYear &&
+          month === currentMonth &&
+          date === currentDate && (
+            <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#1f97e6] font-semibold bg-sky-100">
               New
             </div>
           )
         )}
+
         <figure>
           <img className="w-64 h-64" src={imageLink} alt="event" />
         </figure>
@@ -85,7 +87,11 @@ const EachEventDetail = ({ event }) => {
           </p>
           <p className="text-sm">location: {location}</p>
           <div className="card-actions justify-end">
-            {startDate < endDate ? (
+            {year > currentYear ||
+            (year === currentYear && month > currentMonth) ||
+            (year === currentYear &&
+              month === currentMonth &&
+              date > currentDate) ? (
               <>
                 <button
                   onClick={hadleEventRegister}
@@ -93,24 +99,26 @@ const EachEventDetail = ({ event }) => {
                 >
                   Register Now
                 </button>
-                <ToastContainer></ToastContainer>
+                <ToastContainer />
               </>
-            ) : startDate > endDate ? (
+            ) : year < currentYear ||
+              (year === currentYear && month < currentMonth) ||
+              (year === currentYear &&
+                month === currentMonth &&
+                date < currentDate) ? (
               <button className="btn bg-[gray] text-white disabled">
                 Finished
               </button>
             ) : (
-              startDate === endDate && (
-                <>
-                  <button
-                    onClick={hadleEventRegister}
-                    className="btn bg-[#447af4] text-white"
-                  >
-                    Register Now
-                  </button>
-                  <ToastContainer></ToastContainer>
-                </>
-              )
+              <>
+                <button
+                  onClick={hadleEventRegister}
+                  className="btn bg-[#447af4] text-white"
+                >
+                  Register Now
+                </button>
+                <ToastContainer />
+              </>
             )}
           </div>
         </div>
