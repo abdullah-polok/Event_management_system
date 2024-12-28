@@ -66,7 +66,7 @@ const AllEvents = () => {
           className="tab-content bg-[#e0f2fe69] border-base-300 rounded-box p-6 mr-4 min-h-screen"
         >
           {newEvent.length > 0 ? (
-            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
               {newEvent.map((event) => (
                 <EachEventDetail event={event} key={event.id} />
               ))}
@@ -91,7 +91,7 @@ const AllEvents = () => {
           className="tab-content bg-[#e7efd16e] border-base-300 rounded-box p-6 min-h-screen"
         >
           {upcomingEvent.length > 0 ? (
-            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
               {upcomingEvent.map((event) => (
                 <EachEventDetail event={event} key={event.id} />
               ))}
@@ -115,7 +115,7 @@ const AllEvents = () => {
           className="tab-content bg-[#fee2e270] border-base-300 rounded-box p-6 min-h-screen"
         >
           {finishEvent.length > 0 ? (
-            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
               {finishEvent.map((event) => (
                 <EachEventDetail event={event} key={event.id} />
               ))}

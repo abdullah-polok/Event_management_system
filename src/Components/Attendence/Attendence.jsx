@@ -31,16 +31,18 @@ const Attendence = () => {
     fetchEventData();
   }, [paramId.id]);
 
-  if (specificEvent != null) {
-    console.log("specficEvent:", specificEvent);
-  }
+  // if (specificEvent != null) {
+  //   console.log("specficEvent:", specificEvent);
+  // }
   const handleAttendence = async () => {
     try {
       const attenData = {
         eventId: paramId.id,
         eventName: specificEvent != null && specificEvent.name,
-        userId: user.uid,
-        username: user.displayName,
+        userId: user?.uid,
+        username: user?.displayName,
+        userphoto: user?.photoURL,
+        useremail: user?.email,
         orgEmail: specificEvent != null && specificEvent.email,
       };
 

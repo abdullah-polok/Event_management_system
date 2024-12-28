@@ -12,6 +12,7 @@ import RegisteredEventDetails from "../Components/RegisteredEventDetails/Registe
 import MyRegistered from "../Pages/Dashboard/RegisteredModal/MyRegistered";
 import MyHostedEvent from "../Components/HostedEvent/MyHostedEvent";
 import Attendence from "../Components/Attendence/Attendence";
+import AllParticipants from "../Components/HostedEvent/AllParticipants";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Attendence></Attendence>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/participants/:id",
+        element: (
+          <PrivateRouter>
+            <AllParticipants></AllParticipants>
           </PrivateRouter>
         ),
       },

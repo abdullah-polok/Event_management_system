@@ -37,7 +37,7 @@ const EachEventDetail = ({ event }) => {
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1; // 0-indexed: January is 0
   const currentDate = today.getDate();
-  console.log("Today date", currentYear, " ", currentMonth, " ", currentDate);
+
   const dataString = starttime.replace(" at", "");
 
   const dateObj = new Date(dataString);
@@ -46,7 +46,6 @@ const EachEventDetail = ({ event }) => {
   const month = dateObj.getMonth() + 1;
   const date = dateObj.getDate();
 
-  console.log("Database data", year, " ", month, " ", date);
   return (
     <div>
       <div className="card bg-base-100 image-full xl:w-96 w-80 h-64 shadow-xl mt-6 relative ">
@@ -81,11 +80,12 @@ const EachEventDetail = ({ event }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title xl:text-base text-sm">{name}</h2>
-          <p className="text-sm">type: {eventType}</p>
+          <p className="text-sm">Type: {eventType}</p>
           <p className="text-sm">
             {starttime} - {endtime}
           </p>
-          <p className="text-sm">location: {location}</p>
+          <p className="text-sm">Location: {location}</p>
+          <p className="text-sm">Organizer email: {email}</p>
           <div className="card-actions justify-end">
             {year > currentYear ||
             (year === currentYear && month > currentMonth) ||
