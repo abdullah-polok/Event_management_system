@@ -31,7 +31,7 @@ const RegisteredEventDetails = () => {
   };
   // console.log(feedbackData);
   return (
-    <div className="px-5">
+    <div className="px-5 mt-2">
       <div
         className="hero h-3/4 rounded-xl"
         style={{
@@ -53,7 +53,7 @@ const RegisteredEventDetails = () => {
           </div>
         </div>
       </div>
-      <div className="w-2/4 mx-auto mt-4  border-[#447af4] rounded-lg">
+      <div className="mx-auto mt-4  border-[#447af4] rounded-lg">
         <div>
           {feedbackData.length ? (
             <div className=" px-10 py-5 rounded-lg">
@@ -70,7 +70,7 @@ const RegisteredEventDetails = () => {
           )}
         </div>
       </div>
-      <div className="w-2/4 mt-4 mx-auto">
+      <div className=" mt-4 mx-auto">
         <form onSubmit={handlefeedback}>
           <div className="form-control">
             <textarea

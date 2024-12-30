@@ -180,6 +180,8 @@ const AuthProvider = ({ children }) => {
           to_email: user?.email,
           eventname: registerData.name,
           subject: subject,
+          event_time: `start at ${registerData.starttime} - End at ${registerData.endtime} `,
+          event_location: `Location: ${registerData.location}`,
         };
 
         emailjs

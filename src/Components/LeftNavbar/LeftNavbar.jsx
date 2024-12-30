@@ -21,11 +21,11 @@ const LeftNavbar = () => {
           {!isCollapsed && (
             <>
               <div className="avatar">
-                <div className="w-12 rounded-full">
+                <div className="w-11 rounded-full">
                   <img src={user?.photoURL} alt="User Avatar" />
                 </div>
               </div>
-              <div className="text-white font-semibold text-base w-52 truncate">
+              <div className="text-white font-semibold text-sm w-52 truncate">
                 {user?.displayName}
                 <br />
                 <span className="text-xs overflow-hidden">
@@ -44,11 +44,11 @@ const LeftNavbar = () => {
               className="text-base text-white rounded-sm flex items-center gap-2 font-semibold"
             >
               <img
-                className="w-8 bg-slate-200 rounded-lg p-1"
+                className="w-7 bg-slate-200 rounded-lg p-1"
                 src={dashboard}
                 alt="Dashboard"
               />
-              {!isCollapsed && <p className="text-base">Dashboard</p>}
+              {!isCollapsed && <p className="text-sm">Dashboard</p>}
             </Link>
           </div>
           <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
@@ -57,11 +57,11 @@ const LeftNavbar = () => {
               className="text-base text-white rounded-sm flex items-center gap-2 font-semibold"
             >
               <img
-                className="w-8 bg-slate-200 rounded-lg p-1"
+                className="w-7 bg-slate-200 rounded-lg p-1"
                 src={create}
                 alt="Event Creation"
               />
-              {!isCollapsed && <p className="text-base">Event Creation</p>}
+              {!isCollapsed && <p className="text-sm">Event Creation</p>}
             </Link>
           </div>
           <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
@@ -70,11 +70,11 @@ const LeftNavbar = () => {
               className="text-base text-white rounded-sm flex items-center gap-2 font-semibold"
             >
               <img
-                className="w-8 bg-slate-200 rounded-lg p-1"
+                className="w-7 bg-slate-200 rounded-lg p-1"
                 src={register}
                 alt="Event Registration"
               />
-              {!isCollapsed && <p className="text-base">Event Registration</p>}
+              {!isCollapsed && <p className="text-sm">Event Registration</p>}
             </Link>
           </div>
           <div className="bg-[#FFFFFF24] rounded-lg p-2 mt-7">
@@ -83,11 +83,11 @@ const LeftNavbar = () => {
               className="text-base text-white rounded-sm flex items-center gap-2 font-semibold"
             >
               <img
-                className="w-8 bg-slate-200 rounded-lg p-1"
+                className="w-7 bg-slate-200 rounded-lg p-1"
                 src={feedback}
                 alt="Feedback"
               />
-              {!isCollapsed && <p className="text-base">Feedback</p>}
+              {!isCollapsed && <p className="text-sm">Feedback</p>}
             </Link>
           </div>
         </div>

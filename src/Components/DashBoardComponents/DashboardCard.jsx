@@ -19,7 +19,7 @@ const DashboardCard = () => {
 
   return (
     <div className="grid xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 justify-items-center overflow-y-auto">
-      <div className=" bg-[#1c73f3] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
+      <div className=" card bg-[#1c73f3]  xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
         <div className=" flex gap-3">
           <div className="bg-[#ffffff49] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -27,11 +27,11 @@ const DashboardCard = () => {
               src={myevent}
             />
           </div>
-          <h1 className="text-lg">My registered events</h1>
+          <h1 className="text-base">My registered events</h1>
         </div>
         <div
           onClick={() => document.getElementById("my_modal_4").showModal()}
-          className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4"
+          className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm"
         >
           Number of events: {eventRegisteredFilter.length}
         </div>
@@ -39,7 +39,7 @@ const DashboardCard = () => {
           eventRegisteredFilter={eventRegisteredFilter}
         ></RegisteredModal>
         <Link to="/myregistered" state={{ eventRegisteredFilter }}>
-          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
+          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
             View event details
           </div>
         </Link>
@@ -57,9 +57,9 @@ const DashboardCard = () => {
               alt=""
             />
           </div>
-          <h1 className="text-lg">Upcoming events</h1>
+          <h1 className="text-base">Upcoming events</h1>
         </div>
-        <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-6">
+        <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
           Upcoming events details
         </div>
         <UpcomingModal></UpcomingModal>
@@ -77,14 +77,14 @@ const DashboardCard = () => {
               alt=""
             />
           </div>
-          <h1 className="text-lg">Hosted event</h1>
+          <h1 className="text-base">Hosted event</h1>
         </div>
-        <div className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
+        <div className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
           Number of events: {eventHosted.length}
         </div>
         <HostedModal eventHosted={eventHosted}></HostedModal>
         <Link to="/myhostedevent" state={{ eventHosted }}>
-          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4">
+          <div className=" mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
             View hosted event details
           </div>
         </Link>

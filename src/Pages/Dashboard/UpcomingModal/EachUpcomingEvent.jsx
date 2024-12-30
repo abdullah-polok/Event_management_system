@@ -30,12 +30,12 @@ const EachUpcomingEvent = ({ event }) => {
     <div>
       {endDate >= startDate && (
         <div className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto">
-          <h3 className="font-bold text-lg">{name}</h3>
-          <p className="py-1">
+          <h3 className="font-bold text-base">{name}</h3>
+          <p className="py-1 text-sm">
             {starttime} - {endtime}
           </p>
-          <p className="flex items-center gap-2 mt-2">
-            <FaLocationDot className="text-white" /> {location}
+          <p className="flex items-center gap-2 mt-2 text-sm">
+            <FaLocationDot className="text-white text-sm" /> {location}
           </p>
         </div>
       )}

@@ -8,7 +8,7 @@ const MyHostedEvent = () => {
   const eventHostedFilter = locations.state.eventHosted;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 justify-items-center overflow-y-auto">
+    <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2  justify-items-center overflow-y-auto">
       {eventHostedFilter.map((event, index) => (
         <EachHostedEventDetails
           event={event}

@@ -11,7 +11,7 @@ const EachHostedEventDetails = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full w-96 shadow-xl mt-6">
+      <div className="card bg-base-100 image-full xl:w-96 lg:w-96 shadow-xl mt-6">
         <figure>
           <img src={cardColor} />
         </figure>

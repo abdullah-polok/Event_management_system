@@ -22,14 +22,10 @@ const RegisteredModal = ({ eventRegisteredFilter }) => {
                 key={index}
                 className="bg-[#FFFFFF24] p-4 rounded-lg mt-2 overflow-y-auto"
               >
-                <h3 className="font-bold text-lg">{event.name}</h3>
-                <p className="py-1">
+                <h3 className="font-bold text-base">{event.name}</h3>
+                <p className="py-1 text-sm">
                   {event.starttime} - {event.endtime}
                 </p>
-                {/* <p className="flex items-center gap-2 mt-2">
-                    <FaLocationDot className="text-white" />
-                    {event.location}
-                  </p> */}
               </div>
             </>
           ))}

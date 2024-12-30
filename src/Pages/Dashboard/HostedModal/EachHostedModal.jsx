@@ -26,12 +26,14 @@ const EachHostedModal = ({ event }) => {
   return (
     <div>
       <div className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto">
-        <h3 className="font-bold text-lg">{name}</h3>
-        <p className="py-1">
+        <h3 className="font-bold text-base">{name}</h3>
+        <p className="py-1 text-sm">
           {starttime} - {endtime}
         </p>
-        <p>Number of feedbacks: {eventIDFilter.length}</p>
-        <p>Number of participants: {partiIDFilter.length}</p>
+        <p className="text-sm">Number of feedbacks: {eventIDFilter.length}</p>
+        <p className="text-sm">
+          Number of participants: {partiIDFilter.length}
+        </p>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const EachEventDetail = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full xl:w-96 w-80 h-64 shadow-xl mt-6 relative ">
+      <div className="card bg-base-100 image-full xl:w-96 lg:w-96 w-52 xl:h-64 64 shadow-xl mt-6 relative ">
         {year > currentYear ||
         (year === currentYear && month > currentMonth) ||
         (year === currentYear &&
@@ -76,7 +76,11 @@ const EachEventDetail = ({ event }) => {
         )}
 
         <figure>
-          <img className="w-64 h-64" src={imageLink} alt="event" />
+          <img
+            className="xl:-64 lg:w-64 w-40 xl:h-64 lg:h-64 h-40 "
+            src={imageLink}
+            alt="event"
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title xl:text-base text-sm">{name}</h2>
@@ -85,7 +89,7 @@ const EachEventDetail = ({ event }) => {
             {starttime} - {endtime}
           </p>
           <p className="text-sm">Location: {location}</p>
-          <p className="text-sm">Organizer email: {email}</p>
+          <p className="text-sm break-all">Organizer email: {email}</p>
           <div className="card-actions justify-end">
             {year > currentYear ||
             (year === currentYear && month > currentMonth) ||
