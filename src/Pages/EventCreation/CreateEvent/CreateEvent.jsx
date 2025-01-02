@@ -93,7 +93,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className=" mt-10 px-10">
+    <div className=" mt-10">
       <div className="bg-white  shadow-lg py-4 rounded-xl">
         <div className="px-6">
           <h1 className="text-2xl text-left">Add Event</h1>

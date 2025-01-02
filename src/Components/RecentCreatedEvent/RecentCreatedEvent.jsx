@@ -18,7 +18,7 @@ const RecentCreatedEvent = () => {
           Recent Created Events
         </div>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 justify-items-center">
         {filterEventData.map((eachevent) => {
           return <EachEvent eachevent={eachevent} key={eachevent.id} />;
         })}

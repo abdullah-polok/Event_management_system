@@ -48,7 +48,7 @@ const EachEventDetail = ({ event }) => {
 
   return (
     <div>
-      <div className="card bg-base-100 image-full xl:w-96 lg:w-96 w-52 xl:h-64 64 shadow-xl mt-6 relative ">
+      <div className="card bg-base-100 image-full xl:w-96 lg:w-96 shadow-xl mt-6 relative ">
         {year > currentYear ||
         (year === currentYear && month > currentMonth) ||
         (year === currentYear &&

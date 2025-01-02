@@ -5,8 +5,10 @@ const EachEvent = ({ eachevent }) => {
     eachevent;
 
   return (
-    <div className="card card-side  mt-10 overflow-y-hidden overflow-hidden image-full xl:w-96 lg:w-80 h-64 shadow-xl">
-      <img className="w-full" src={imageLink} />
+    <div className="card card-side  mt-10 overflow-y-hidden overflow-hidden image-full xl:w-96 lg:w-96  shadow-xl">
+      <figure className="w-full h-56">
+        <img src={imageLink} />
+      </figure>
       <div className="card-body mb-4">
         <h2 className="card-title text-white font-bold text-base">{name}</h2>
         <h2 className="text-base">Event type: {eventType}</h2>

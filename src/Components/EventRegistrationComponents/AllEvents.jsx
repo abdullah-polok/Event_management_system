@@ -69,7 +69,7 @@ const AllEvents = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-[#e0f2fe69] border-base-300 rounded-box p-6 mr-4 min-h-screen"
+          className="tab-content bg-[#e0f2fe69] border-base-300 rounded-box p-2 mr-4 min-h-screen"
         >
           {newEvent.length > 0 ? (
             <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
@@ -94,7 +94,7 @@ const AllEvents = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-[#e7efd16e] border-base-300 rounded-box p-6 min-h-screen"
+          className="tab-content bg-[#e7efd16e] border-base-300 rounded-box p-2 min-h-screen"
         >
           {upcomingEvent.length > 0 ? (
             <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
@@ -118,7 +118,7 @@ const AllEvents = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-[#fee2e270] border-base-300 rounded-box p-6 min-h-screen"
+          className="tab-content bg-[#fee2e270] border-base-300 rounded-box p-2 min-h-screen"
         >
           {finishEvent.length > 0 ? (
             <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 justify-items-center">
