@@ -24,7 +24,10 @@ const Navbar = () => {
   return (
     <div className="navbar  shadow-md">
       <div className="flex-1">
-        <Link to={"/dashboard"} className="btn btn-ghost text-xl">
+        <Link
+          to={"/dashboard"}
+          className="btn btn-ghost text-xl text-[#1c73f3] font-bold"
+        >
           CampusConnect
         </Link>
       </div>

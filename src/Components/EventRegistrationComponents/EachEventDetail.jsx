@@ -75,12 +75,9 @@ const EachEventDetail = ({ event }) => {
           )
         )}
 
-        <figure>
-          <img
-            className="xl:-64 lg:w-64 w-40 xl:h-64 lg:h-64 h-40 "
-            src={imageLink}
-            alt="event"
-          />
+        <figure className="w-full h-56">
+          {/* xl:-64 lg:w-64 w-40 xl:h-64 lg:h-64 h-36  */}
+          <img className="" src={imageLink} alt="event" />
         </figure>
         <div className="card-body p-4">
           <h2 className="card-title xl:text-base text-sm">{name}</h2>

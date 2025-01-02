@@ -14,7 +14,7 @@ const AllEvents = () => {
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1; // 0-indexed: January is 0
   const currentDate = today.getDate();
-  console.log("Today date", currentYear, " ", currentMonth, " ", currentDate);
+  // console.log("Today date", currentYear, " ", currentMonth, " ", currentDate);
 
   useEffect(() => {
     const newEvents = [];
@@ -30,7 +30,7 @@ const AllEvents = () => {
       const year = dateObj.getFullYear();
       const month = dateObj.getMonth() + 1;
       const date = dateObj.getDate();
-      console.log("Database data", year, " ", month, " ", date);
+      // console.log("Database data", year, " ", month, " ", date);
       if (
         year < currentYear ||
         (year === currentYear && month < currentMonth) ||

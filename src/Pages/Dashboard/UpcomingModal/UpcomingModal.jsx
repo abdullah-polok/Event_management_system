@@ -1,29 +1,44 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import EachUpcomingEvent from "./EachUpcomingEvent";
 
 const UpcomingModal = () => {
   const { eventData, user } = useContext(AuthContext);
+  const [upcomingEvent, setUpcomingEvent] = useState([]);
 
-  //   const upcomingEvent;
-
+  // Get today's date
   const today = new Date();
 
-  // Format options
-  const options = {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
+  // Extract the year, month, and date
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth() + 1; // 0-indexed: January is 0
+  const currentDate = today.getDate();
 
-  // Format the date
-  const formattedDateToday = new Intl.DateTimeFormat("en-US", options).format(
-    today
-  );
+  useEffect(() => {
+    const upcomingEvents = [];
+
+    eventData.forEach((event) => {
+      // Preprocess the date string to make it parsable
+      const dataString = event.starttime.replace(" at", "");
+
+      const dateObj = new Date(dataString);
+
+      const year = dateObj.getFullYear();
+      const month = dateObj.getMonth() + 1;
+      const date = dateObj.getDate();
+      // console.log("Database data", year, " ", month, " ", date);
+      if (
+        year > currentYear ||
+        (year === currentYear && month > currentMonth) ||
+        (year === currentYear && month === currentMonth && date > currentDate)
+      ) {
+        upcomingEvents.push(event);
+      }
+    });
+
+    setUpcomingEvent(upcomingEvents);
+  }, [eventData]);
 
   return (
     <div>
@@ -40,7 +55,7 @@ const UpcomingModal = () => {
             </form>
           </div>
           <Link to={"/eventregistration"}>
-            {eventData.map((event, index) => (
+            {upcomingEvent.map((event, index) => (
               <EachUpcomingEvent key={index} event={event}></EachUpcomingEvent>
             ))}
           </Link>
