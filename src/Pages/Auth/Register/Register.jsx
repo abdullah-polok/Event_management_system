@@ -135,7 +135,7 @@ const Register = () => {
                 type="text"
                 name="name"
                 placeholder="full name"
-                className="input input-bordered"
+                className="input input-bordered input-sm py-5"
                 required
               />
             </div>
@@ -147,7 +147,7 @@ const Register = () => {
                 type="email"
                 name="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered input-sm py-5"
                 required
               />
             </div>
@@ -159,19 +159,19 @@ const Register = () => {
                 type="password"
                 name="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered input-sm py-5"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Confirm Password</span>
               </label>
               <input
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm password"
-                className="input input-bordered"
+                className="input input-bordered input-sm py-5"
                 required
               />
             </div>
@@ -184,7 +184,7 @@ const Register = () => {
                 name="media"
                 placeholder="Date"
                 onChange={handleFileChange}
-                className="input input-bordered py-2 w-full"
+                className="input input-bordered input-sm pb-10 pt-1 w-full"
                 required
               />
               <div className="text-center">
@@ -197,7 +197,9 @@ const Register = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#447af4] text-white">Register</button>
+              <button className="btn bg-[#447af4] text-white btn-sm pb-6 pt-2">
+                Register
+              </button>
               <ToastContainer></ToastContainer>
             </div>
           </form>

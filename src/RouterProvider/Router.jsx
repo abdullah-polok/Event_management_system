@@ -13,6 +13,7 @@ import MyRegistered from "../Pages/Dashboard/RegisteredModal/MyRegistered";
 import MyHostedEvent from "../Components/HostedEvent/MyHostedEvent";
 import Attendence from "../Components/Attendence/Attendence";
 import AllParticipants from "../Components/HostedEvent/AllParticipants";
+import ResetPassword from "../Pages/Auth/ResetPassword/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         <Attendence></Attendence>
       </PrivateRouter>
     ),
+  },
+  {
+    path: "/resetpassword",
+    element: <ResetPassword></ResetPassword>,
   },
   {
     path: "/",

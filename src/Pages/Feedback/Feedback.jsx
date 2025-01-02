@@ -9,7 +9,7 @@ const Feedback = () => {
     (event) => event.email === user?.email
   );
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 justify-items-center overflow-y-auto">
+    <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2  justify-items-center overflow-y-auto">
       {eventRegisteredFilter.map((event, index) => (
         <EachRegisteredDetails
           event={event}

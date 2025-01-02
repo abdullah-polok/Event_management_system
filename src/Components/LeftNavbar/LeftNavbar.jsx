@@ -7,7 +7,7 @@ import feedback from "../../assets/Images/best-customer-experience.png";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 const LeftNavbar = () => {
   const { user } = useContext(AuthContext);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <div className="flex bg-slate-100">
       {/* Sidebar */}
@@ -97,7 +97,7 @@ const LeftNavbar = () => {
       <div className="flex items-center h-screen">
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="bg-[#447af4] text-white w-8 h-16 rounded-r-full shadow-md flex items-center justify-center border border-white"
+          className="bg-[#447af4] text-white xl:w-8 lg:w-8 w-4 h-16 rounded-r-full shadow-md flex items-center justify-center border border-white"
         >
           {isCollapsed ? ">" : "<"}
         </button>

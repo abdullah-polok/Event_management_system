@@ -287,7 +287,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const resetPassword = (email) => {
-    console.log(email);
     return sendPasswordResetEmail(auth, email);
   };
 

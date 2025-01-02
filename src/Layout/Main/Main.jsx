@@ -18,9 +18,9 @@ const Main = () => {
               <LeftNavbar></LeftNavbar>
             </nav>
           </div>
-          <div className="flex-1 overflow-y-auto scrollbar-hide bg-slate-100">
+          <div className="flex-1 overflow-y-auto scrollbar-hide bg-slate-100 px-1">
             {/* Main Content Area */}
-            <main className="main-content  h-screen">
+            <main className="main-content  h-screen px-1">
               <Outlet /> {/* Renders the active route's content */}
             </main>
           </div>

@@ -54,7 +54,7 @@ const EachEventDetail = ({ event }) => {
         (year === currentYear &&
           month === currentMonth &&
           date > currentDate) ? (
-          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1]">
+          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#64c729] font-semibold bg-[#e7efd1] text-xs">
             Upcoming
           </div>
         ) : year < currentYear ||
@@ -62,14 +62,14 @@ const EachEventDetail = ({ event }) => {
           (year === currentYear &&
             month === currentMonth &&
             date < currentDate) ? (
-          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-red-700 font-semibold bg-red-100">
+          <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-red-700 font-semibold bg-red-100 text-xs">
             Finished
           </div>
         ) : (
           year === currentYear &&
           month === currentMonth &&
           date === currentDate && (
-            <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#1f97e6] font-semibold bg-sky-100">
+            <div className="absolute z-10 -top-3 -right-6 mr-2 p-1 rounded-lg text-[#1f97e6] font-semibold bg-sky-100 text-xs">
               New
             </div>
           )
@@ -82,7 +82,7 @@ const EachEventDetail = ({ event }) => {
             alt="event"
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body p-4">
           <h2 className="card-title xl:text-base text-sm">{name}</h2>
           <p className="text-sm">Type: {eventType}</p>
           <p className="text-sm">
@@ -99,7 +99,7 @@ const EachEventDetail = ({ event }) => {
               <>
                 <button
                   onClick={hadleEventRegister}
-                  className="btn bg-[#447af4] text-white"
+                  className="btn bg-[#447af4] text-white btn-sm"
                 >
                   Register Now
                 </button>
@@ -110,14 +110,14 @@ const EachEventDetail = ({ event }) => {
               (year === currentYear &&
                 month === currentMonth &&
                 date < currentDate) ? (
-              <button className="btn bg-[gray] text-white disabled">
+              <button className="btn bg-[gray] text-white disabled btn-sm">
                 Finished
               </button>
             ) : (
               <>
                 <button
                   onClick={hadleEventRegister}
-                  className="btn bg-[#447af4] text-white"
+                  className="btn bg-[#447af4] text-white btn-sm"
                 >
                   Register Now
                 </button>

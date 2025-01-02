@@ -18,8 +18,8 @@ const DashboardCard = () => {
   );
 
   return (
-    <div className="grid xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 justify-items-center overflow-y-auto">
-      <div className=" card bg-[#1c73f3]  xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-6">
+    <div className="grid xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 justify-items-center overflow-y-auto ">
+      <div className=" card bg-[#1c73f3]  xl:w-96 w-72 h-64 rounded-xl p-6 font-semibold text-white mt-6">
         <div className=" flex gap-3">
           <div className="bg-[#ffffff49] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -45,10 +45,7 @@ const DashboardCard = () => {
         </Link>
       </div>
 
-      <div
-        onClick={() => document.getElementById("my_modal_6").showModal()}
-        className="bg-[#14bc9c] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
-      >
+      <div className="bg-[#14bc9c] rounder xl:w-96 w-72 h-64 rounded-xl p-6 font-semibold text-white mt-5">
         <div className="flex gap-3">
           <div className="bg-[#FFFFFF24] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -59,16 +56,16 @@ const DashboardCard = () => {
           </div>
           <h1 className="text-base">Upcoming events</h1>
         </div>
-        <div className="mt-10 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
+        <div
+          onClick={() => document.getElementById("my_modal_6").showModal()}
+          className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm"
+        >
           Upcoming events details
         </div>
         <UpcomingModal></UpcomingModal>
       </div>
 
-      <div
-        onClick={() => document.getElementById("my_modal_5").showModal()}
-        className="bg-[#fb7c73] rounder xl:w-96 w-72 h-64 rounded-2xl p-6 font-semibold text-white mt-5"
-      >
+      <div className="bg-[#fb7c73] rounder xl:w-96 w-72 h-64 rounded-xl p-6 font-semibold text-white mt-5">
         <div className="flex gap-3">
           <div className="bg-[#FFFFFF24] rounded-lg text-center px-1 py-1  w-16 h-14">
             <img
@@ -79,7 +76,10 @@ const DashboardCard = () => {
           </div>
           <h1 className="text-base">Hosted event</h1>
         </div>
-        <div className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm">
+        <div
+          onClick={() => document.getElementById("my_modal_5").showModal()}
+          className="mt-4 bg-[#ffffff49] rounded-xl px-3 py-4 text-sm"
+        >
           Number of events: {eventHosted.length}
         </div>
         <HostedModal eventHosted={eventHosted}></HostedModal>
