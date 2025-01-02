@@ -22,14 +22,14 @@ const ResetPassword = () => {
       });
   };
   return (
-    <div className="hero mt-10">
+    <div className="hero">
       <div className="hero-content min-h-screen flex-col">
         <div className="text-center">
           <h1 className="xl:text-3xl lg:text-3xl text-xl font-bold text-[#1c73f3]">
             Reset your password
           </h1>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-slate-400 shadow-md">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0">
           <form onSubmit={handleReset} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -39,12 +39,12 @@ const ResetPassword = () => {
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input input-bordered input-sm py-5"
                 required
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#1c73f3]  text-white text-lg">
+              <button className="btn bg-[#1c73f3]  text-white text-sm btn-sm pb-6 pt-2">
                 Reset Password
               </button>
               <ToastContainer></ToastContainer>

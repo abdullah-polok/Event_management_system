@@ -2,7 +2,7 @@ import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../../../firebase.config";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 const Attendence = () => {
   const navigate = useNavigate();

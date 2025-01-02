@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import cardColor from "../../assets/Images/cardColor.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HostedModal from "../../Pages/Dashboard/HostedModal/HostedModal";
 import ParticipantsModal from "./AllParticipants";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 const EachHostedEventDetails = ({ event }) => {
   const { participant } = useContext(AuthContext);
   const { id, name, location, starttime, endtime } = event;
+
+  ///get full URL from website
+  const locationWeb = useLocation();
+  const fullURL = `${window.location.origin}${location.pathname}`;
+  console.log(fullURL);
+  // const getFullURL = () => {
+
+  // };
 
   return (
     <div>
