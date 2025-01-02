@@ -23,7 +23,7 @@ const ResetPassword = () => {
   };
   return (
     <div className="hero mt-10">
-      <div className="hero-content flex-col">
+      <div className="hero-content min-h-screen flex-col">
         <div className="text-center">
           <h1 className="xl:text-3xl lg:text-3xl text-xl font-bold text-[#1c73f3]">
             Reset your password
