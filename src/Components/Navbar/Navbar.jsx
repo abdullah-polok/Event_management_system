@@ -3,10 +3,18 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase.config";
+import useRouteChange from "../../Hooks/useRouteChange";
 
 const Navbar = () => {
   const { setUser, setLoading, user } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  ///custom hook for reload on route change call
+  const handleRouteChange = (pathname) => {
+    // console.log("Route changed to:", pathname);
+  };
+  useRouteChange(handleRouteChange);
+
   const handleUser = () => {
     setLoading(true);
     signOut(auth)
@@ -47,9 +55,15 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-[#447af4] rounded-box z-20 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <button className="text-white" onClick={handleUser}>
-                Logout
-              </button>
+              {user ? (
+                <button className="text-white" onClick={handleUser}>
+                  Logout
+                </button>
+              ) : (
+                <Link to={"/"} className="text-white">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

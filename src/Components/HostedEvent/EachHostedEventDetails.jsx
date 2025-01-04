@@ -1,18 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import cardColor from "../../assets/Images/cardColor.jpg";
 import { Link, useLocation } from "react-router-dom";
 import HostedModal from "../../Pages/Dashboard/HostedModal/HostedModal";
 import ParticipantsModal from "./AllParticipants";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaRegCopy } from "react-icons/fa6";
+import { ToastContainer, toast } from "react-toastify";
+
 const EachHostedEventDetails = ({ event }) => {
   const { participant } = useContext(AuthContext);
   const { id, name, location, starttime, endtime } = event;
 
   ///get full URL from website
   const locationWeb = useLocation();
-  const fullURL = `${window.location.origin}${location.pathname}`;
-  console.log(fullURL);
+  const fullURL = `${window.location.origin}/myhostedevent/${id}`;
+
+  ///text copy implementation
+  const [isHidden, setIsHidden] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(fullURL).then(() => {
+      toast("Link copied successfully");
+    });
+  };
+
   // const getFullURL = () => {
 
   // };
@@ -24,8 +36,13 @@ const EachHostedEventDetails = ({ event }) => {
           <img src={cardColor} />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-
+          <div className="card-title flex items-center">
+            <h1>{name}</h1>
+            <button onClick={handleCopy} className="btn btn-md btn-ghost">
+              <FaRegCopy />
+            </button>
+            <ToastContainer></ToastContainer>
+          </div>
           <p className="text-sm">
             {starttime} - {endtime}
           </p>

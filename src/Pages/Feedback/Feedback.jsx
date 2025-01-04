@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import EachRegisteredDetails from "../Dashboard/RegisteredModal/EachRegisteredDetails";
 

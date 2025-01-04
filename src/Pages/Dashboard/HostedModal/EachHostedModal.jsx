@@ -2,27 +2,22 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const EachHostedModal = ({ event }) => {
-  const { eventRegisterData, setChartData, chartData, participant } =
-    useContext(AuthContext);
+  const {
+    eventRegisterData,
+    setChartData,
+    chartData,
+    participant,
+    feedbackData,
+  } = useContext(AuthContext);
 
   const { name, starttime, endtime, id } = event;
 
-  const eventIDFilter = eventRegisterData.filter(
-    (event) => event.eventId === id
+  const eventIDFilter = feedbackData.filter(
+    (event) => event.eventIdFeed === id
   );
+  console.log(eventIDFilter);
   const partiIDFilter = participant.filter((event) => event.eventId === id);
 
-  // const eve
-  // ///check predata exist into the charData state or not
-  // useEffect(() => {
-  //   setChartData((predata) => {
-  //     const newCharData = chartInfo.filter((newItem) => {
-  //       return !predata.some((existItem) => existItem.name === newItem.name);
-  //     });
-
-  //     return [...predata, ...chartInfo];
-  //   });
-  // }, []);
   return (
     <div>
       <div className="bg-[#ffffff49]  p-4 rounded-lg mt-2 overflow-y-auto">

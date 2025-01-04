@@ -5,6 +5,7 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import RecentCreatedEvent from "../../../Components/RecentCreatedEvent/RecentCreatedEvent";
 import { Swal } from "sweetalert2/dist/sweetalert2";
 import { serverTimestamp } from "firebase/firestore";
+import { ToastContainer, toast } from "react-toastify";
 const CreateEvent = () => {
   const { addEventFunc, user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -70,7 +71,7 @@ const CreateEvent = () => {
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert("Please select a file first!");
+      toast("Please select a file first!");
       return;
     }
 
@@ -85,10 +86,10 @@ const CreateEvent = () => {
 
       // Set the image URL from the response
       setImageUrl(response.data.data.display_url);
-      alert("Image uploaded successfully!");
+      toast("Image uploaded successfully!");
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert("Failed to upload image. Please try again.");
+      toast("Failed to upload image. Please try again.");
     }
   };
 
@@ -200,6 +201,7 @@ const CreateEvent = () => {
                       Upload Image
                     </button>
                   </div>
+                  <ToastContainer></ToastContainer>
                 </div>
 
                 <div className="form-control mt-6">
